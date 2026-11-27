@@ -1,0 +1,623 @@
+/* =====================================================================
+   ABI ESTATES - refinements.css
+   DESIGN REFINEMENTS for the home page and shared pieces. These rules were
+   added after the main design, so they load late and win over earlier files.
+      1. Home page: journal frames, phone field, contact text, phone hero
+      2. Home page: "A more thoughtful search" heading + filters
+      3. Home page: "Notes on living" heading
+      4. Phone layout fixes (hero, quick contact)
+      5. Buttons, cards and photos: hover polish
+      6. Small notes, form messages
+      7. Motion + accessibility (hero photo, parallax, number row, menu, skip link)
+      8. Site-wide visual system (header, headings, sections, cards, banners)
+
+   Load order (the same on every page; a later file wins when two rules clash):
+      variables > base > header-hero > home-sections > animations >
+      responsive > inner-pages > refinements > effects > typography > premium
+   ===================================================================== */
+
+/* =====================================================================
+   1. HOME PAGE: JOURNAL FRAMES, PHONE FIELD, CONTACT TEXT
+   ===================================================================== */
+
+/* Consistent frame padding and border for every Notes on Living image. */
+.journal-image {
+    box-sizing: border-box;
+    padding: 9px;
+    border: 1px solid rgba(var(--gold-rgb), 0.9);
+    background-origin: content-box;
+}
+
+.journal-image::before { inset: 10px; z-index: 2; }
+.journal-image::after { inset: 10px; z-index: 1; }
+.journal-card:hover .journal-image::before { inset: 16px; }
+
+/* Keep the +91 field compact and the contact information aligned. */
+.phone-control { display: grid; grid-template-columns: 108px minmax(0, 1fr); gap: 6px; }
+.hero-enquiry .phone-control select { min-width: 0; width: 100%; padding-left: 8px; padding-right: 20px; }
+.hero-enquiry .phone-control input { min-width: 0; width: 100%; }
+.contact-details h3 { max-width: 510px; margin: 20px 0; color: var(--white); font-size: clamp(28px, 3.5vw, 42px); line-height: 1.18; font-weight: 500; }
+.contact-details > p:not(.eyebrow) { color: rgba(var(--white-rgb), .78); line-height: 1.75; }
+.contact-details .contact-hours { margin: 22px 0; }
+
+@media (max-width: 900px) {
+    .hero { height: auto; min-height: 100vh; padding-bottom: 72px; }
+    .hero-enquiry { display: block; position: relative; top: auto; right: auto; transform: none; width: min(600px, calc(100vw - 2 * var(--page-gutter))); margin: 76vh auto 38px; }
+    .hero-content { top: 36%; }
+    .hero-bottom { bottom: 18px; }
+}
+
+/* =====================================================================
+   2. HOME PAGE: A MORE THOUGHTFUL SEARCH
+   Heading, supporting text and the filter bar.
+   ===================================================================== */
+
+.search-section .section-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+    align-items: end;
+    gap: clamp(24px, 4vw, 58px);
+    margin-bottom: 0;
+}
+
+.search-section #discovery-title {
+    max-width: 15ch;
+    margin: 14px 0 0;
+    font-size: clamp(40px, 4.45vw, 60px);
+    line-height: 1.08;
+    letter-spacing: -.04em;
+}
+
+.search-section .heading-note {
+    width: 100%;
+    max-width: 44ch;
+    margin: 0 0 6px;
+    padding: 5px 0 5px 22px;
+    border-left: 1px solid rgba(var(--bronze-rgb), .42);
+    color: var(--muted);
+    font-size: clamp(14px, 1.12vw, 16px);
+    line-height: 1.75;
+}
+
+.search-section .search-panel {
+    margin-top: clamp(24px, 3vw, 34px);
+    padding: 0 0 0 20px;
+    grid-template-columns: minmax(0,1.1fr) minmax(0,1.1fr) minmax(0,.85fr) minmax(155px,auto);
+}
+
+@media (max-width: 900px) {
+    .search-section .search-panel {
+        padding: 12px 18px;
+        grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+    .search-section .search-button { grid-column: 1 / -1; min-height: 48px; }
+}
+
+@media (max-width: 760px) {
+    .search-section { padding-top: 54px; padding-bottom: 54px; }
+    .search-section .section-heading {
+        grid-template-columns: minmax(0,1fr);
+        gap: 14px;
+    }
+    .search-section #discovery-title { font-size: clamp(34px, 9vw, 46px); }
+    .search-section .heading-note {
+        max-width: 62ch;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+    .search-section .search-panel {
+        margin-top: 23px;
+        padding: 10px 16px 16px;
+        grid-template-columns: minmax(0,1fr);
+    }
+    .search-section .search-button { grid-column: auto; margin-top: 13px; }
+}
+
+/* =====================================================================
+   3. HOME PAGE: NOTES ON LIVING
+   Section title on the left, introduction on the right.
+   ===================================================================== */
+
+.journal .journal-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+    align-items: end;
+    gap: clamp(28px, 6vw, 84px);
+}
+
+.journal .journal-top > p {
+    justify-self: end;
+    max-width: 46ch;
+    margin: 0 0 7px;
+    padding: 4px 0 4px 22px;
+    border-left: 1px solid rgba(var(--bronze-rgb), .38);
+    line-height: 1.75;
+}
+
+@media (max-width: 760px) {
+    .journal .journal-top {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+    .journal .journal-top > p {
+        justify-self: start;
+        max-width: 62ch;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+}
+
+/* =====================================================================
+   4. PHONE LAYOUT FIXES
+   ===================================================================== */
+
+/* Nothing may make the page wider than the screen */
+main {
+    overflow-x: clip;
+}
+
+/* Sideways slide-ins only on wide screens (on phones the waiting element
+   stuck out to the side and made the page scroll sideways) */
+@media (max-width: 900px) {
+    .reveal-left,
+    .reveal-right {
+        transform: translateY(30px);
+    }
+}
+
+/* Phones and tablets: headline first, enquiry form underneath.
+   (Before, the form was pushed down with a big margin and the slider
+   buttons and neighbourhood strip covered it.) */
+@media (max-width: 900px) {
+    .hero {
+        height: auto;
+        min-height: 0;
+        max-height: none;   /* the original 820px limit cut the form off */
+        padding: 64px var(--page-gutter) 124px;   /* bottom space = room for the slider buttons */
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .hero-content {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        transform: none;
+        animation: rise-in 0.9s 0.15s ease-out both;
+    }
+
+    .hero-enquiry {
+        width: 100%;
+        max-width: 560px;
+        margin: 0;
+    }
+}
+
+@media (max-width: 760px) {
+    .hero {
+        padding-bottom: 96px;
+    }
+
+    /* Quick contact tab: small, in the bottom corner, so it does not cover headings */
+    .quick-contact {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .quick-contact a {
+        min-width: 0;
+        min-height: 44px;
+        padding: 0 14px;
+    }
+}
+
+/* =====================================================================
+   5. BUTTONS, CARDS + PHOTOS: HOVER POLISH
+   ===================================================================== */
+
+/* Buttons: a soft light sweeps across on hover, and they press down when clicked */
+.button,
+.nav-cta,
+.search-button,
+.filter-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.button::after,
+.nav-cta::after,
+.search-button::after,
+.filter-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-18deg);
+    pointer-events: none;
+}
+
+.button:hover::after,
+.nav-cta:hover::after,
+.search-button:hover::after,
+.filter-button:hover::after {
+    animation: button-sheen 0.8s ease;
+}
+
+.button:active,
+.nav-cta:active,
+.search-button:active,
+.filter-button:active {
+    transform: translateY(0);
+}
+
+/* Cards lift smoothly on the inner pages too */
+.property-card,
+.page-property-card {
+    transition: transform 0.6s cubic-bezier(0.22, 0.72, 0.25, 1), opacity 0.9s, filter 0.9s;
+}
+
+.page-property-card:hover {
+    transform: translateY(-6px);
+}
+
+/* Feature cards keep their fade-in AND their hover lift */
+.page-feature-card.reveal {
+    transition: opacity 0.9s, filter 0.9s, transform 0.6s ease-out, box-shadow 0.35s ease;
+}
+
+/* Framed photos on the inner pages lift slightly on hover */
+.page-image-story > img,
+.editorial-image {
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.page-image-story > img:hover,
+.editorial-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 26px 52px rgba(var(--palm-rgb), 0.18);
+}
+
+/* =====================================================================
+   6. SMALL NOTES + FORM MESSAGES
+   enquiry.js sets data-state="working", "success" or "error" on the message line.
+   ===================================================================== */
+
+/* Honest note under the listings */
+.sample-note {
+    max-width: 1180px;
+    margin: 18px auto 0;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    text-align: center;
+}
+
+.copyright a,
+.page-footer a[href*="credits"] {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.hero-form-message[data-state="error"]   { color: #f4ad97 !important; }
+.hero-form-message[data-state="success"] { color: #bfe5c9 !important; }
+
+/* While sending: the button shows it is busy */
+.is-sending [type="submit"] {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button:hover::after,
+    .nav-cta:hover::after,
+    .search-button:hover::after,
+    .filter-button:hover::after {
+        animation: none;
+    }
+}
+
+/* =====================================================================
+   7. MOTION + ACCESSIBILITY
+   ===================================================================== */
+
+/* Hero photos open out from the centre when the page loads */
+.hero-images {
+    animation: hero-photo-in 1.6s cubic-bezier(0.22, 0.72, 0.25, 1) both;
+}
+
+/* Parallax: photo slightly bigger than its frame, moved by core.js (part 7) */
+.hero-images[data-parallax] {
+    transform: translate3d(0, var(--parallax-y, 0px), 0) scale(1.06);
+}
+
+.principles-visual img[data-parallax] {
+    transform: translate3d(0, var(--parallax-y, 0px), 0) scale(1.12);
+}
+
+.principles-visual:hover img[data-parallax] {
+    transform: translate3d(0, var(--parallax-y, 0px), 0) scale(1.16);
+}
+
+/* Numbers row under "Not simply a property" (counts up, see core.js part 6) */
+.stats-band {
+    margin: 42px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    list-style: none;
+    border-top: 1px solid var(--line);
+}
+
+.stats-band li {
+    padding: 20px 16px 0 0;
+    /* Each item uses 3 shared rows (number, label, text). "subgrid" makes those rows
+       the same height in every column, so a 2-line label ("Chennai neighbourhoods")
+       no longer pushes its text lower than the text in the other columns. */
+    grid-row: span 3;
+    display: grid;
+    grid-template-rows: subgrid;
+    align-content: start;
+}
+
+.stats-band li + li {
+    padding-left: 18px;
+    border-left: 1px solid var(--line);
+}
+
+.stat-number {
+    display: block;
+    color: var(--bronze);
+    font-size: clamp(32px, 3.4vw, 48px);
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    hyphens: auto;               /* on very narrow phones a long word breaks with a "-" */
+    overflow-wrap: break-word;   /* instead of running into the next column */
+}
+
+.stat-detail {
+    max-width: 190px;
+    margin: 36px 0 0;
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+/* Phone menu: links slide in one after another */
+.nav-menu.open .nav-link,
+.nav-menu.open .nav-cta {
+    animation: rise-in 0.45s ease-out both;
+}
+
+.nav-menu.open > :nth-child(2) { animation-delay: 0.04s; }
+.nav-menu.open > :nth-child(3) { animation-delay: 0.08s; }
+.nav-menu.open > :nth-child(4) { animation-delay: 0.12s; }
+.nav-menu.open > :nth-child(5) { animation-delay: 0.16s; }
+.nav-menu.open > :nth-child(6) { animation-delay: 0.2s; }
+.nav-menu.open > :nth-child(7) { animation-delay: 0.24s; }
+
+/* Keyboard users: link to jump straight to the content */
+.skip-link {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 300;
+    padding: 10px 16px;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--gold);
+    transform: translateY(-160%);
+    transition: transform 0.2s;
+}
+
+.skip-link:focus {
+    transform: none;
+}
+
+/* Numbers row in 2 x 2 on tablets, small laptops and phones.
+   Below 1100px four columns are too narrow and "NEIGHBOURHOODS" ran into the next column.
+   Change 1100px if you change the width of the intro text column. */
+@media (max-width: 1100px) {
+    .stats-band {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stats-band li:nth-child(3) {
+        padding-left: 0;
+        border-left: 0;
+    }
+
+    .stats-band li:nth-child(n + 3) {
+        margin-top: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-images[data-parallax],
+    .principles-visual img[data-parallax] {
+        transform: none;
+    }
+}
+
+/* =====================================================================
+   8. SITE-WIDE VISUAL SYSTEM
+   Header, headings, section backgrounds, cards, inner page banners, links, footer.
+   ===================================================================== */
+
+html { scroll-padding-top: 96px; }
+body {
+    color: var(--ink);
+    background-color: var(--paper);
+    font-family: var(--font);
+    letter-spacing: -.012em;
+}
+
+h1, h2, h3, h4, .section-title, .page-hero h1, .brand-name {
+    font-family: var(--font-display);
+    font-weight: 500;
+}
+
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+.site-header {
+    min-height: 88px;
+    background: rgba(var(--white-rgb), .92);
+    border-bottom-color: rgba(var(--palm-rgb), .16);
+    box-shadow: 0 10px 32px rgba(var(--palm-rgb), .07);
+    backdrop-filter: blur(18px) saturate(125%);
+}
+
+.site-header.scrolled { min-height: 70px; background: rgba(var(--white-rgb), .88); }
+.brand { gap: 13px; }
+.brand-mark { width: 44px; height: 44px; border-color: transparent; }
+.brand-name { font-size: 15px; letter-spacing: .14em; }
+.brand-name small { font-family: var(--font); font-size: 9px; letter-spacing: .26em; }
+.nav-menu { gap: clamp(16px, 2.45vw, 36px); }
+.nav-link { font-family: var(--font); font-size: 12px; font-weight: 600; letter-spacing: .075em; }
+.nav-cta { border-radius: 2px; box-shadow: 0 8px 22px rgba(var(--palm-rgb), .16); }
+
+.hero { min-height: 620px; border-bottom: 1px solid rgba(var(--gold-rgb), .6); }
+.hero-slide { filter: saturate(.82) contrast(1.04); }
+.hero-shade {
+    background:
+        linear-gradient(90deg, rgba(12,18,15,.72) 0%, rgba(12,18,15,.42) 43%, rgba(12,18,15,.13) 100%),
+        linear-gradient(0deg, rgba(10,15,12,.5), transparent 48%);
+}
+.hero::after { inset: 20px; opacity: .72; }
+.hero-content h1, .hero-content h2 { font-family: var(--font-display); font-weight: 500; letter-spacing: -.045em; }
+.hero-text { max-width: 510px; font-family: var(--font); font-size: clamp(15px, 1.3vw, 18px); line-height: 1.8; }
+.hero-enquiry { border-radius: 3px; border-color: rgba(var(--light-gold-rgb), .62); box-shadow: 0 32px 90px rgba(6,13,10,.48), inset 0 0 0 1px rgba(var(--white-rgb),.08); }
+
+.section-padding { padding-inline: var(--page-gutter); }
+.section-title { letter-spacing: -.045em; line-height: 1.08; }
+.section-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr);
+    align-items: end;
+    gap: clamp(24px, 4.5vw, 68px);
+}
+.section-heading .section-title { margin-top: 16px; }
+.section-heading > p,
+.journal-top > p {
+    max-width: 48ch;
+    padding: 5px 0 5px 22px;
+    border-left: 1px solid rgba(var(--bronze-rgb), .42);
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+.intro, .search-section, .properties, .approach, .journal, .contact {
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.intro { background-image: radial-gradient(ellipse at 8% 82%, rgba(var(--gold-rgb), .12), transparent 42%); }
+.search-section { background-image: linear-gradient(120deg, rgba(var(--white-rgb), .26), transparent 58%); }
+.properties { background-image: radial-gradient(ellipse at 94% 20%, rgba(var(--gold-rgb), .10), transparent 36%); }
+.approach { background-image: linear-gradient(105deg, rgba(var(--palm-rgb), .025), transparent 62%); }
+
+.property-card, .page-property-card, .journal-card, .page-feature-card {
+    transform: translateZ(0);
+    transition: transform .65s cubic-bezier(.2,.7,.2,1), box-shadow .55s ease, border-color .35s ease;
+}
+.property-card, .page-property-card { border-color: rgba(var(--gold-rgb), .45); }
+.property-card:hover, .page-property-card:hover, .journal-card:hover, .page-feature-card:hover {
+    transform: translateY(-7px);
+}
+.property-image-wrap, .page-property-card .property-image-wrap { overflow: hidden; }
+.property-image, .page-property-card .property-image { transition: transform 1.1s cubic-bezier(.2,.7,.2,1), filter .7s ease; }
+.property-card:hover .property-image, .page-property-card:hover .property-image { transform: scale(1.055); filter: saturate(1.06); }
+.property-info, .page-property-card .property-info { border-top-color: rgba(var(--gold-rgb), .38); }
+.property-info h3, .page-property-card .property-info h3, .journal-card h3, .journal-page .journal-card h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -.025em;
+}
+
+.page-feature-card {
+    border-color: rgba(var(--gold-rgb), .42);
+    background: linear-gradient(160deg, rgba(var(--white-rgb), .92), rgba(var(--white-rgb), .62));
+    box-shadow: 0 12px 34px rgba(var(--palm-rgb), .055);
+}
+.page-feature-card img { transition: transform 1.1s cubic-bezier(.2,.7,.2,1), filter .7s ease; }
+.page-feature-card:hover img { transform: scale(1.04); filter: saturate(1.06); }
+.page-image-story { position: relative; }
+.page-image-story > img, .editorial-image { box-shadow: 0 26px 64px rgba(var(--palm-rgb), .15); }
+.page-image-story > img { transition: transform .8s cubic-bezier(.2,.7,.2,1), box-shadow .8s ease; }
+.page-image-story > img:hover { transform: translateY(-7px) scale(1.012); }
+.page-image-story h2, .editorial-copy h2, .contact-note h2 { font-family: var(--font-display); font-weight: 500; letter-spacing: -.035em; }
+.page-step-grid article { border-color: rgba(var(--gold-rgb), .42); background: linear-gradient(145deg, rgba(var(--white-rgb), .86), rgba(var(--white-rgb), .48)); }
+.page-step-grid article > span, .page-stat-row strong { font-family: var(--font); }
+.journal { background-color: var(--paper-deep); }
+.journal-image { filter: saturate(.84) contrast(1.02); transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .8s ease, box-shadow .6s ease; }
+.journal-card:hover .journal-image { filter: saturate(1.06); }
+
+.page-hero {
+    padding-top: clamp(66px, 7vw, 102px);
+    padding-bottom: clamp(36px, 4vw, 62px);
+}
+.page-hero::before {
+    top: 50%;
+    right: clamp(24px, 10vw, 150px);
+    width: clamp(210px, 25vw, 360px);
+    height: auto;
+    aspect-ratio: 1;
+    border: 1px solid rgba(var(--gold-rgb), .28);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(var(--gold-rgb), .13), rgba(var(--gold-rgb), .035) 44%, transparent 70%);
+    background-size: auto;
+    box-shadow: 0 0 0 20px rgba(var(--bronze-rgb), .035), 0 0 0 46px rgba(var(--gold-rgb), .035), inset 0 0 45px rgba(var(--gold-rgb), .08);
+    transform: translateY(-42%);
+    mask-image: none;
+    -webkit-mask-image: none;
+    animation: editorial-orbit 15s ease-in-out infinite alternate;
+}
+.page-hero::after { position: absolute; bottom: 12px; left: var(--page-gutter); margin: 0; }
+.page-hero h1 { max-width: 13ch; font-weight: 500; line-height: .99; }
+.page-lede { max-width: 58ch; font-size: clamp(15px, 1.28vw, 18px); line-height: 1.85; }
+.page-section { padding-top: clamp(28px, 4vw, 54px); padding-bottom: clamp(68px, 8vw, 112px); }
+.page-section-heading { margin-bottom: clamp(24px, 3vw, 40px); }
+.page-section-heading .heading-note { max-width: 48ch; }
+
+.text-link { font-family: var(--font); font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.button, .filter-button, .search-button, .nav-cta { letter-spacing: .065em; }
+.filter-button, .search-button { border-radius: 2px; }
+.page-footer { background: var(--palm); color: rgba(var(--white-rgb), .78); border-top-color: rgba(var(--gold-rgb), .48); }
+.page-footer .brand { color: var(--white); }
+
+@media (max-width: 900px) {
+    .section-heading { grid-template-columns: minmax(0, 1fr) minmax(240px, .8fr); }
+    .properties-page-hero { grid-template-columns: minmax(0, 1fr) minmax(280px, .9fr); }
+}
+
+@media (max-width: 760px) {
+    .site-header { min-height: 72px; }
+    .section-heading { display: block; }
+    .section-heading > p, .journal-top > p { margin-top: 16px; padding: 0; border: 0; }
+    .page-hero:not(.properties-page-hero)::before { right: -30px; top: 62%; width: 180px; opacity: .55; }
+    .page-hero::after { bottom: 8px; }
+    .page-section { padding-bottom: 72px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}

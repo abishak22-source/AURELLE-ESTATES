@@ -1,0 +1,53 @@
+<!-- Floor plan drawing (decoration only). Used by CSS/premium.css behind photos.
+     To change the line colour, change stroke="#b08d57" below. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 430" fill="none" stroke="#b08d57" stroke-linecap="round" stroke-linejoin="round">
+  <!-- outer walls (double line) -->
+  <g stroke-width="2.2">
+    <path d="M40 50h520v340H40z"/>
+    <path d="M48 58h504v324H48z" stroke-width="1"/>
+  </g>
+  <!-- inner walls -->
+  <g stroke-width="1.8">
+    <path d="M250 58v92m0 44v34M48 228h96m44 0h150M380 58v110m0 44v170M380 158h70m44 0h58"/>
+  </g>
+  <!-- doors: a straight leaf and its swing arc -->
+  <g stroke-width="1">
+    <path d="M250 150h44"/><path d="M294 150a44 44 0 0 1-44 44" stroke-dasharray="3 4"/>
+    <path d="M144 228v-44"/><path d="M144 184a44 44 0 0 1 44 44" stroke-dasharray="3 4"/>
+    <path d="M380 168h44"/><path d="M424 168a44 44 0 0 1-44 44" stroke-dasharray="3 4"/>
+    <path d="M450 158v-38"/><path d="M450 120a38 38 0 0 1 38 38" stroke-dasharray="3 4"/>
+  </g>
+  <!-- windows in the outer wall -->
+  <g stroke-width="1">
+    <path d="M92 50h110M92 54h110M92 58h110M300 50h60M300 54h60M300 58h60M420 50h90M420 54h90M420 58h90"/>
+    <path d="M40 270v80M44 270v80M48 270v80M552 250v90M556 250v90M560 250v90M140 390h160M140 386h160M140 382h160"/>
+  </g>
+  <!-- bedroom: bed, pillows, side tables -->
+  <g stroke-width="1.2">
+    <path d="M92 78h120v104H92z"/><path d="M100 86h48v22h-48zM156 86h48v22h-48zM92 124h120"/>
+    <path d="M70 84h16v18H70zM218 84h16v18h-16z"/>
+  </g>
+  <!-- living room: sofa, coffee table, rug, armchair -->
+  <g stroke-width="1.2">
+    <path d="M76 300h150v54H76z"/><path d="M76 314h150M90 300v-10h122v10"/>
+    <ellipse cx="151" cy="270" rx="38" ry="16"/>
+    <path d="M70 244h170v130H70z" stroke-dasharray="2 6" stroke-width="1"/>
+    <path d="M268 262h50v50h-50zM268 274h50"/>
+  </g>
+  <!-- kitchen counter (top right) -->
+  <g stroke-width="1.2">
+    <path d="M394 72h144v24H394zM514 96v48h24V96"/><circle cx="420" cy="84" r="6"/><circle cx="440" cy="84" r="6"/>
+  </g>
+  <!-- dining table with six chairs (bottom right) -->
+  <g stroke-width="1.2">
+    <path d="M420 238h96v110h-96z"/>
+    <path d="M402 256h12v20h-12zM402 310h12v20h-12zM522 256h12v20h-12zM522 310h12v20h-12zM456 222h24v10h-24zM456 354h24v10h-24z"/>
+  </g>
+  <!-- dimension line above the plan -->
+  <g stroke-width="1">
+    <path d="M40 24h520M40 16v16M250 18v12M380 18v12M560 16v16"/>
+    <path d="M584 50v340M576 50h16M576 390h16"/>
+  </g>
+  <!-- small north arrow -->
+  <path d="M18 412l6-18 6 18-6-5z" stroke-width="1.2"/>
+</svg>

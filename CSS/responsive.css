@@ -1,0 +1,843 @@
+/* =====================================================================
+   ABI ESTATES - responsive.css
+   Tablet and phone layouts (each block only lists what changes), then the
+   reduced-motion settings for visitors who ask their device for less movement.
+
+   Load order (the same on every page; a later file wins when two rules clash):
+      variables > base > header-hero > home-sections > animations >
+      responsive > inner-pages > refinements > effects > typography > premium
+   ===================================================================== */
+
+/* =====================================================================
+   RESPONSIVE LAYOUTS / TABLETS + PHONES
+   "@media (max-width: 900px)" means: only use these rules when the
+   screen is 900px wide or smaller. Each block only lists what CHANGES.
+   ===================================================================== */
+
+/* ---------- Tablets and small laptops (900px and below) ---------- */
+@media (max-width: 900px) {
+    :root {
+        --page-gutter: clamp(24px, 5vw, 40px);
+    }
+
+    /* Header */
+    .site-header {
+        min-height: 84px;
+    }
+
+    .nav-menu {
+        gap: clamp(10px, 1.7vw, 18px);
+    }
+
+    .nav-link {
+        font-size: 13px;
+    }
+
+    .nav-cta {
+        padding: 10px 11px;
+        font-size: 13px;
+    }
+
+    /* Hero */
+    .hero {
+        height: min(720px, calc(100svh - 84px));
+    }
+
+    .hero-drawing {
+        right: 4%;
+        width: 39vw;
+        opacity: 0.48;
+    }
+
+    /* Intro */
+    .intro {
+        grid-template-columns: 0.65fr 2fr;
+    }
+
+    /* Property search: two drop-downs per row, button underneath */
+    .search-panel {
+        grid-template-columns: 1fr 1fr;
+        padding: 12px 18px;
+    }
+
+    .search-field {
+        padding: 12px 10px 12px 0;
+    }
+
+    .search-field + .search-field {
+        padding-left: 15px;
+    }
+
+    .search-button {
+        grid-column: 1 / -1;
+        min-height: 48px;
+    }
+
+    /* Properties */
+    .property-details {
+        flex-wrap: wrap;
+        gap: 10px 18px;
+    }
+
+    /* Our approach */
+    .approach {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .approach-text {
+        padding: 70px 40px;
+    }
+
+    /* Contact */
+    .contact {
+        gap: 5vw;
+    }
+}
+
+/* COLLECTION CARDS / ONE SHARED IMAGE, TITLE, PRICE AND DETAILS GRID */
+.property-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.property-image-wrap {
+    width: 100%;
+    aspect-ratio: 1.42 / 1;
+    flex: none;
+}
+
+.property-info {
+    flex: 1;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: minmax(106px, auto) auto;
+    align-content: start;
+}
+
+.property-info > div:first-child {
+    min-width: 0;
+    min-height: 106px;
+}
+
+.property-info h3 {
+    display: -webkit-box;
+    min-height: 2.4em;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 1.2;
+}
+
+.property-location {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.property-price {
+    white-space: nowrap;
+}
+
+/* The price sits on the same text line as the first line of the home's name
+   ("baseline" = the line the letters stand on), on the home page and the Properties page. */
+.property-info > div:first-child,
+.property-info > .property-price {
+    align-self: baseline;
+}
+
+.property-details {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    gap: 0;
+}
+
+.property-details span {
+    min-width: 0;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: clamp(11px, 1.05vw, 14px);
+}
+
+.property-details span + span {
+    border-left: 1px solid var(--line);
+}
+
+.property-details span + span::before {
+    content: none;
+}
+
+@media (max-width: 640px) {
+    .property-info {
+        grid-template-rows: minmax(96px, auto) auto auto;
+    }
+
+    .property-info > div:first-child {
+        min-height: 96px;
+    }
+
+    .property-details span {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .journal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .journal-card-large {
+        grid-column: auto;
+    }
+}
+
+/* ---------- Tablets in portrait (760px and below) ---------- */
+@media (max-width: 760px) {
+    /* Header: hide the links and show the menu button instead */
+    .site-header {
+        min-height: 72px;
+    }
+
+    .site-header.scrolled {
+        min-height: 64px;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .menu-button {
+        display: flex;
+    }
+
+    /* JavaScript adds the class "open" when the menu button is clicked */
+    .nav-menu.open {
+        position: absolute;
+        top: calc(100% + 8px); /* just below the header */
+        left: 0;
+        right: 0;
+        padding: 18px 22px 22px;
+        display: flex;
+        flex-direction: column; /* links stacked vertically */
+        align-items: stretch;
+        gap: 0;
+        background: rgba(var(--white-rgb), 0.98);
+        border: 1px solid rgba(var(--gold-rgb), 0.55);
+        border-radius: 3px;
+        box-shadow: 0 18px 38px rgba(12, 19, 15, 0.24);
+        animation: menu-open 0.32s ease-out both;
+    }
+
+    .nav-menu.open .nav-link {
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 15px;
+    }
+
+    .nav-menu.open .nav-link::after {
+        display: none; /* no hover underline in the mobile menu */
+    }
+
+    .nav-menu.open .nav-link.current {
+        color: var(--bronze);
+        font-weight: 700;
+    }
+
+    .nav-cta {
+        margin-top: 16px;
+        text-align: center;
+    }
+
+    /* Hero */
+    .hero {
+        height: min(720px, calc(100svh - 72px));
+        min-height: 560px;
+    }
+
+    .hero-content {
+        top: 47%;
+    }
+
+    .hero-bottom {
+        right: auto;
+        bottom: 29px;
+        width: 40%;
+    }
+
+    .scroll-hint {
+        display: none;
+    }
+
+    .hero-controls {
+        left: auto;
+        right: var(--page-gutter);
+        bottom: 24px;
+        transform: none;
+    }
+
+    /* Quick contact: becomes a small horizontal box above the slider buttons */
+    .quick-contact {
+        top: auto;
+        right: var(--page-gutter);
+        bottom: 88px;
+        grid-auto-flow: column; /* buttons side by side */
+        border-right: 1px solid rgba(var(--gold-rgb), 0.52);
+        border-radius: 8px;
+        transform: none;
+    }
+
+    .quick-contact a {
+        min-width: 66px;
+        min-height: 54px;
+        padding: 10px;
+        grid-auto-flow: column;
+    }
+
+    .quick-contact a + a {
+        border-top: 0;
+        border-left: 1px solid var(--line);
+    }
+
+    .quick-contact-icon {
+        font-size: 16px;
+    }
+
+    /* Intro: columns stacked */
+    .intro {
+        display: block;
+    }
+
+    .intro-label {
+        margin-bottom: 33px;
+    }
+
+    .intro-bottom {
+        align-items: flex-start;
+    }
+
+    /* Properties and journal: fainter circles */
+    .properties::before,
+    .journal::after {
+        opacity: 0.55;
+    }
+
+    /* Principles: one column */
+    .principles {
+        grid-template-columns: 1fr;
+        gap: 42px;
+    }
+
+    /* Contact: one column, circles moved further right */
+    .contact {
+        grid-template-columns: 1fr;
+        gap: 44px;
+    }
+
+    .contact::before,
+    .contact::after {
+        right: -380px;
+        opacity: 0.55;
+    }
+}
+
+/* ---------- Phones (640px and below) ---------- */
+@media (max-width: 640px) {
+    :root {
+        --page-gutter: 22px;
+    }
+
+    /* Header */
+    .brand-mark {
+        width: 37px;
+        height: 37px;
+    }
+
+    .brand-name {
+        font-size: 12px;
+    }
+
+    .menu-button {
+        width: 42px;
+        height: 42px;
+    }
+
+    /* Hero */
+    .hero::before {
+        opacity: 0.35;
+    }
+
+    .hero-slide {
+        background-position: 58% center;
+    }
+
+    .hero-shade {
+        background:
+            linear-gradient(90deg, rgba(12, 15, 13, 0.58), rgba(12, 15, 13, 0.12)),
+            linear-gradient(0deg, rgba(10, 12, 10, 0.42), transparent 45%);
+    }
+
+    .hero-drawing {
+        top: 43%;
+        right: -15%;
+        width: 73vw;
+        opacity: 0.3;
+    }
+
+    .hero-text {
+        font-size: 16px;
+    }
+
+    .hero-bottom {
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        font-size: 11px;
+        letter-spacing: 0.04em;
+    }
+
+    .hero-location {
+        display: none;
+    }
+
+    .hero-index {
+        right: 10px;
+        font-size: 10px;
+    }
+
+    .hero-button {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* Neighbourhood strip */
+    .neighbourhood-strip {
+        min-height: 56px;
+    }
+
+    .strip-group span {
+        font-size: 10px;
+    }
+
+    /* Section headings */
+    .section-title {
+        font-size: clamp(42px, 11vw, 59px);
+    }
+
+    .section-heading {
+        display: block;
+    }
+
+    /* Intro */
+    .intro {
+        padding-top: 70px;
+        padding-bottom: 72px;
+    }
+
+    .intro::before {
+        right: -20%;
+        width: 85%;
+        opacity: 0.28;
+    }
+
+    .vertical-line {
+        height: 35px;
+    }
+
+    .intro-bottom {
+        margin-top: 28px;
+        display: block;
+    }
+
+    .intro-bottom p {
+        font-size: 16px;
+    }
+
+    .intro-bottom .text-link {
+        margin-top: 24px;
+    }
+
+    /* Property search: everything in one column */
+    .search-section {
+        padding-top: 62px;
+        padding-bottom: 58px;
+    }
+
+    .heading-note {
+        margin-top: 23px;
+    }
+
+    .search-panel {
+        margin-top: 30px;
+        padding: 10px 16px 16px;
+        grid-template-columns: 1fr;
+    }
+
+    .search-field,
+    .search-field + .search-field {
+        padding: 13px 0;
+        border-left: 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .search-button {
+        grid-column: auto;
+        margin-top: 13px;
+    }
+
+    /* Properties: one card per row */
+    .properties {
+        padding-top: 64px;
+        padding-bottom: 60px;
+    }
+
+    .properties-intro {
+        margin-top: 12px;
+        font-size: 15px;
+    }
+
+    .collection-heading-note {
+        justify-self: stretch;
+        max-width: 100%;
+        margin: 22px 0 0;
+    }
+
+    .property-card.visible:hover {
+        transform: translateY(-4px); /* simple lift, no tilt */
+    }
+
+    .property-image-wrap {
+        aspect-ratio: 1.45 / 1;
+    }
+
+    .property-info h3 {
+        font-size: clamp(25px, 7vw, 31px);
+    }
+
+    /* Our approach: photo on top, text below */
+    .approach {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .approach-image {
+        min-height: 340px;
+    }
+
+    .approach-text {
+        min-height: 0;
+        padding: 54px var(--page-gutter);
+    }
+
+    .approach-text .section-title {
+        font-size: clamp(38px, 10vw, 52px);
+    }
+
+    /* Principles */
+    .principles {
+        padding-top: 68px;
+        padding-bottom: 68px;
+    }
+
+    .principle h3 {
+        font-size: 23px;
+    }
+
+    /* Journal: cards stacked */
+    .journal {
+        padding-top: 64px;
+        padding-bottom: 68px;
+    }
+
+    .journal-top {
+        display: block;
+    }
+
+    .journal-top > p {
+        margin-top: 15px;
+    }
+
+    .journal-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .journal-card:nth-child(2) {
+        margin-top: 0;
+    }
+
+    .journal-card h3 {
+        font-size: clamp(26px, 7.5vw, 34px);
+    }
+
+    /* Contact */
+    .contact {
+        padding-top: 66px;
+        padding-bottom: 66px;
+        gap: 34px;
+    }
+
+    .contact .section-title {
+        font-size: clamp(48px, 13vw, 68px);
+    }
+
+    /* Footer */
+    .site-footer {
+        padding-top: 38px;
+        padding-bottom: 70px;
+    }
+
+    .site-footer > p {
+        font-size: 16px;
+    }
+
+    .footer-links {
+        gap: 22px;
+    }
+}
+
+/* ---------- Small phones (420px and below) ---------- */
+@media (max-width: 420px) {
+    .hero-content {
+        top: 45%;
+    }
+
+    .hero-panel h1,
+    .hero-panel h2 {
+        font-size: clamp(46px, 13vw, 62px);
+    }
+
+    .hero-text {
+        font-size: 15px;
+    }
+
+    .quick-contact {
+        bottom: 83px;
+    }
+
+    .quick-contact a {
+        min-width: 60px;
+        min-height: 48px;
+    }
+}
+
+/* ---------- Very small phones (380px and below) ---------- */
+@media (max-width: 380px) {
+    :root {
+        --page-gutter: 18px;
+    }
+
+    .property-details {
+        gap: 12px;
+    }
+
+    .property-details span + span::before {
+        margin-right: 12px;
+    }
+}
+
+/* ---------- Very wide screens (1400px and above) ---------- */
+/* Stop the content from becoming too wide and hard to read */
+@media (min-width: 1400px) {
+    .intro-main,
+    .section-heading,
+    .property-grid,
+    .principles,
+    .journal-grid {
+        max-width: 1600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* ---------- Small-screen adjustments for the collection and navigation ---------- */
+@media (max-width: 900px) {
+    /* Switch to the menu before the full link row gets squeezed. */
+    .menu-button {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .nav-menu.open {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: var(--page-gutter);
+        right: var(--page-gutter);
+        padding: 18px 22px 22px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: rgba(var(--white-rgb), 0.98);
+        border: 1px solid rgba(var(--gold-rgb), 0.55);
+        border-radius: 3px;
+        box-shadow: 0 18px 38px rgba(12, 19, 15, 0.24);
+        animation: menu-open 0.32s ease-out both;
+    }
+
+    .nav-menu.open .nav-link {
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 15px;
+    }
+
+    .nav-menu.open .nav-link::after {
+        display: none;
+    }
+
+    .nav-cta {
+        margin-top: 16px;
+        text-align: center;
+    }
+
+    .approach {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .approach-text {
+        padding: 64px 30px;
+    }
+
+    /* Give the hero copy its full width on tablets; the contact tab remains available. */
+    .hero-content {
+        width: min(840px, calc(100% - 2 * var(--page-gutter)));
+    }
+
+    .hero-enquiry {
+        display: none;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+    .hero-content {
+        width: calc(100% - 2 * var(--page-gutter) - 420px);
+    }
+
+    .hero-panel h1,
+    .hero-panel h2 {
+        font-size: clamp(48px, 6vw, 66px);
+    }
+
+    .hero-enquiry {
+        width: 370px;
+        padding: 20px 22px 18px;
+    }
+}
+
+@media (max-width: 640px) {
+    .property-grid {
+        width: 100%;
+    }
+
+    .property-track {
+        gap: 16px;
+    }
+
+    .property-card {
+        flex-basis: 100%;
+    }
+
+    .property-info {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .property-price {
+        text-align: left;
+    }
+
+    .property-details {
+        gap: 9px 14px;
+        font-size: 13px;
+    }
+
+    .property-details span + span::before {
+        margin-right: 10px;
+    }
+
+    .collection-controls {
+        margin-top: 22px;
+    }
+
+    .collection-arrow {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1100px) {
+    .property-card {
+        flex-basis: calc((100% - 24px) / 2);
+    }
+}
+
+@media (max-width: 380px) {
+    .brand-name {
+        letter-spacing: 0.07em;
+    }
+
+    .properties-heading .text-link {
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .property-tag {
+        top: 14px;
+        left: 14px;
+        max-width: calc(100% - 70px);
+        font-size: 10px;
+    }
+
+    .property-details {
+        column-gap: 9px;
+    }
+}
+
+
+/* =====================================================================
+   REDUCED MOTION
+   Some visitors turn off animations in their device settings
+   (for example because movement makes them feel unwell).
+   For them, we switch off moving effects and show everything straight away.
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    /* Show everything that would normally be revealed on scroll */
+    .reveal,
+    .reveal-stagger > * {
+        opacity: 1;
+        filter: none;
+        transform: none;
+    }
+
+    /* Hero slides change instantly without the wipe */
+    .hero-slide {
+        clip-path: none;
+    }
+
+    /* Finished drawing lines (they normally animate in) */
+    .drawing-line {
+        stroke-dashoffset: 0;
+    }
+
+    /* The principles line normally grows in, so show it straight away */
+    .principle-list::before {
+        transform: none;
+    }
+
+    /* No tilt on property cards */
+    .property-card.visible:hover {
+        transform: none;
+    }
+}

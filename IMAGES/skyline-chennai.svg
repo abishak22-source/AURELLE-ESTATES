@@ -1,0 +1,49 @@
+<!-- Chennai skyline line drawing (decoration only): residential towers, a temple gopuram,
+     the Marina lighthouse, palms and the sea. Used by CSS/premium.css on dark sections.
+     To change the line colour, change stroke="#e2c58c" below. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 240" fill="none" stroke="#e2c58c" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" preserveAspectRatio="xMidYMax meet">
+  <!-- ground line -->
+  <path d="M0 230h1600"/>
+
+  <!-- left: low city blocks -->
+  <path d="M20 230v-46h54v46M84 230v-72h40v72M134 230v-38h62v38M206 230v-96h46v96M262 230v-58h36v58"/>
+  <path d="M30 196h10m12 0h10M30 210h10m12 0h10M94 172h8m8 0h8M94 188h8m8 0h8M94 204h8m8 0h8M216 150h8m10 0h8M216 166h8m10 0h8M216 182h8m10 0h8M216 198h8m10 0h8" stroke-width="1"/>
+
+  <!-- palm -->
+  <path d="M330 230c4-24 6-46 2-70"/>
+  <path d="M332 160c-14-10-28-10-40-2M332 160c12-12 28-14 40-6M332 160c-6-14-18-22-30-22M332 160c8-14 20-20 32-18M332 160c0-12 4-22 12-28"/>
+
+  <!-- residential towers -->
+  <path d="M380 230V96h58v134M392 96V82h34v14M448 230V128h44v102M500 230V60h64v170M512 60V46h40v14"/>
+  <path d="M392 112h8m10 0h8m10 0h4M392 130h8m10 0h8m10 0h4M392 148h8m10 0h8m10 0h4M392 166h8m10 0h8m10 0h4M392 184h8m10 0h8m10 0h4M392 202h8m10 0h8m10 0h4" stroke-width="1"/>
+  <path d="M514 78h10m12 0h10M514 96h10m12 0h10M514 114h10m12 0h10M514 132h10m12 0h10M514 150h10m12 0h10M514 168h10m12 0h10M514 186h10m12 0h10M514 204h10m12 0h10" stroke-width="1"/>
+  <path d="M458 144h8m8 0h8M458 162h8m8 0h8M458 180h8m8 0h8M458 198h8m8 0h8" stroke-width="1"/>
+
+  <!-- temple gopuram: stepped tiers and the barrel roof with small finials -->
+  <path d="M600 230v-40h120v40M640 230v-24h40v24"/>
+  <path d="M606 190l6-22h96l6 22M616 168l6-20h76l6 20M626 148l6-18h56l6 18M636 130l6-16h36l6 16M646 114l5-14h18l5 14"/>
+  <path d="M648 100c4-16 20-16 24 0"/>
+  <path d="M652 92v-8M660 88v-10M668 92v-8"/>
+  <path d="M624 180h72M634 158h52M644 139h32M652 122h16" stroke-width="1" stroke-dasharray="2 5"/>
+
+  <!-- tall towers in the middle -->
+  <path d="M760 230V40h50v190M770 40V28h30v12M785 28V12M820 230V84h56v146M886 230V112h42v118M938 230V70h52v160M948 70V58h32v12"/>
+  <path d="M770 56h8m10 0h8M770 72h8m10 0h8M770 88h8m10 0h8M770 104h8m10 0h8M770 120h8m10 0h8M770 136h8m10 0h8M770 152h8m10 0h8M770 168h8m10 0h8M770 184h8m10 0h8M770 200h8m10 0h8" stroke-width="1"/>
+  <path d="M830 100h10m12 0h10M830 118h10m12 0h10M830 136h10m12 0h10M830 154h10m12 0h10M830 172h10m12 0h10M830 190h10m12 0h10M830 208h10m12 0h10" stroke-width="1"/>
+  <path d="M948 88h10m12 0h10M948 106h10m12 0h10M948 124h10m12 0h10M948 142h10m12 0h10M948 160h10m12 0h10M948 178h10m12 0h10M948 196h10m12 0h10" stroke-width="1"/>
+
+  <!-- palm pair -->
+  <path d="M1030 230c3-20 4-38 0-58M1052 230c-2-16-1-32 4-46"/>
+  <path d="M1030 172c-12-8-24-8-34 0M1030 172c10-10 24-12 34-4M1030 172c-4-12-14-18-24-18M1056 184c-10-8-20-8-28-2M1056 184c10-8 22-8 30-2M1056 184c2-10 8-18 16-20"/>
+
+  <!-- Marina lighthouse -->
+  <path d="M1110 230l8-132h22l8 132M1114 98h30v-18h-30zM1118 80l11-14 11 14M1129 66v-8"/>
+  <path d="M1116 130h26M1114 164h30M1112 198h34" stroke-width="1"/>
+
+  <!-- right: coastal villas and low apartments -->
+  <path d="M1190 230v-48l34-26 34 26v48M1212 230v-22h24v22M1270 230v-64h70v64M1352 230v-42h48v42M1410 230v-86h44v86M1466 230v-52l30-22 30 22v52M1536 230v-70h48v70"/>
+  <path d="M1280 180h10m12 0h10m12 0h10M1280 196h10m12 0h10m12 0h10M1420 160h8m10 0h8M1420 176h8m10 0h8M1420 192h8m10 0h8M1546 176h8m12 0h8M1546 192h8m12 0h8" stroke-width="1"/>
+
+  <!-- the sea -->
+  <path d="M1100 238c18-5 36-5 54 0s36 5 54 0 36-5 54 0 36 5 54 0 36-5 54 0 36 5 54 0 36-5 54 0 36 5 54 0 36-5 54 0" stroke-width="1"/>
+</svg>

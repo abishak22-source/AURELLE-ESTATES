@@ -1,0 +1,24 @@
+{
+  "name": "rls-landing-page",
+  "version": "1.0.0",
+  "description": "This is a static, multi-page real-estate website built with HTML, CSS and plain JavaScript. It does not use a front-end framework or a build step.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abishak22-source/AURELLE-ESTATES.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/abishak22-source/AURELLE-ESTATES/issues"
+  },
+  "homepage": "https://github.com/abishak22-source/AURELLE-ESTATES#readme"
+}

@@ -1,0 +1,271 @@
+/* =====================================================================
+   ABI ESTATES - animations.css
+   WHERE MOVEMENT IS DEFINED. Every @keyframes animation of the site lives
+   here. Other files only use them, e.g.  animation: rise-in 0.9s ease-out;
+   To change HOW an animation moves, edit it here. To change its speed or
+   delay, edit the "animation:" line in the file that uses it.
+
+   Load order (the same on every page; a later file wins when two rules clash):
+      variables > base > header-hero > home-sections > animations >
+      responsive > inner-pages > refinements > effects > typography > premium
+   ===================================================================== */
+
+/* =====================================================================
+   MOTION / ANIMATIONS (@keyframes)
+   Each @keyframes describes how something changes from start (from / 0%)
+   to end (to / 100%). Elements use them with the "animation" property.
+   ===================================================================== */
+
+/* Header slides down when the page loads */
+@keyframes drop-in {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero text block rises into place when the page loads */
+@keyframes hero-rise {
+    from { opacity: 0; transform: translateY(calc(-42% + 22px)); }
+    to   { opacity: 1; transform: translateY(-42%); }
+}
+
+/* New hero text fades in when the slide changes */
+@keyframes panel-in {
+    from { opacity: 0; filter: blur(5px); transform: translateY(24px); }
+    to   { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+/* Very slow zoom on the hero photo */
+@keyframes slow-zoom {
+    from { transform: scale(1.06); }
+    to   { transform: scale(1.13) translate(-0.8%, 0.45%); }
+}
+
+/* Hero corner frame opens from the centre */
+@keyframes frame-draw {
+    from { opacity: 0; clip-path: inset(50% 50%); }
+    to   { opacity: 1; clip-path: inset(0); }
+}
+
+/* House drawing lines appear */
+@keyframes draw-line {
+    to { stroke-dashoffset: 0; }
+}
+
+/* House drawing gently brightens and dims */
+@keyframes soft-blink {
+    0%, 100% { opacity: 0.72; }
+    50%      { opacity: 1; }
+}
+
+/* Glowing dots grow and shrink */
+@keyframes pulse {
+    0%, 100% { opacity: 0.55; transform: scale(0.75); }
+    50%      { opacity: 1; transform: scale(1.35); }
+}
+
+/* Full turn (used by the dotted circles) */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* "Scroll to discover" floats up and down */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-5px); }
+}
+
+/* Neighbourhood strip moves left by one copy of the list */
+@keyframes slide-left {
+    to { transform: translateX(-50%); }
+}
+
+/* Photo is uncovered from top to bottom */
+@keyframes photo-reveal {
+    from { clip-path: inset(0 0 100% 0); }
+    to   { clip-path: inset(0); }
+}
+
+/* Line grows from left to right */
+@keyframes line-grow {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+
+/* Line grows from top to bottom */
+@keyframes line-grow-down {
+    from { transform: scaleY(0); opacity: 0.3; }
+    to   { transform: scaleY(1); opacity: 1; }
+}
+
+/* Shine moves across a photo */
+@keyframes shine {
+    from { left: -55%; }
+    to   { left: 135%; }
+}
+
+/* Gold light moves across the search panel */
+@keyframes sweep-right {
+    to { left: 110%; }
+}
+
+/* Moving words in headings (see .section-title em) */
+@keyframes text-shine {
+    from { background-position: 100% 0; }
+    to   { background-position: 0% 0; }
+}
+
+/* Slowly moving soft background glow (one gradient) */
+@keyframes background-drift {
+    from { background-position: 0% 20%; }
+    to   { background-position: 100% 80%; }
+}
+
+/* Slowly moving soft background glow (two gradients) */
+@keyframes background-drift-two {
+    from { background-position: 0% 0%, 100% 100%; }
+    to   { background-position: 100% 100%, 0% 0%; }
+}
+
+/* Mobile menu pops open */
+@keyframes menu-open {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Soft glow around the footer logo */
+@keyframes glow-gold {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(var(--gold-rgb), 0); }
+    50%      { box-shadow: 0 0 0 7px rgba(var(--gold-rgb), 0.12); }
+}
+
+/* Soft glow around the back-to-top button */
+@keyframes glow-green {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(var(--palm-rgb), 0); }
+    50%      { box-shadow: 0 0 0 5px rgba(var(--palm-rgb), 0.08); }
+}
+
+/* =====================================================================
+   MORE ANIMATIONS (used by header-hero, home-sections, inner-pages, refinements, effects)
+   ===================================================================== */
+
+/* Hero enquiry card fades in; its house drawing draws; its accent line sweeps */
+@keyframes enquiry-card-in {
+    from { opacity: 0; filter: blur(5px); translate: 20px 0; }
+    to { opacity: 1; filter: blur(0); translate: 0 0; }
+}
+
+@keyframes enquiry-house-draw {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes enquiry-accent-sweep {
+    0%, 100% { transform: translateX(-10%); opacity: 0.35; }
+    50% { transform: translateX(145%); opacity: 1; }
+}
+
+/* Light that sweeps across the photo in "The ABI difference" */
+@keyframes principles-image-light {
+    0%, 62%, 100% { background-position: 120% 0; }
+    82% { background-position: -120% 0; }
+}
+
+/* Inner page banners and phone menu links rise into place */
+@keyframes rise-in {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* Soft light that sweeps across a button on hover */
+@keyframes button-sheen {
+    from { left: -60%; }
+    to   { left: 130%; }
+}
+
+/* Hero photos open out from the centre when the page loads */
+@keyframes hero-photo-in {
+    from { clip-path: inset(7% 5% 7% 5%); }
+    to   { clip-path: inset(0); }
+}
+
+/* Properties page banner picture: arrives, shine passes, circles turn */
+@keyframes collection-art-arrive {
+    from { opacity: 0; transform: translate(24px, 12px) scale(.98); }
+    to { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+
+@keyframes collection-art-sheen {
+    to { transform: translateX(130%); }
+}
+
+@keyframes collection-orbit {
+    to { rotate: 360deg; }
+}
+
+/* Slowly turning circle on the Properties page banner */
+@keyframes editorial-orbit {
+    from { transform: translateY(-42%) rotate(-7deg) scale(.97); }
+    to { transform: translateY(-42%) rotate(7deg) scale(1.03); }
+}
+
+/* Arched photo on the inner page banners opens from the bottom */
+@keyframes arch-open {
+    from { clip-path: inset(100% 0 0 0 round 999px 999px 0 0); }
+    to   { clip-path: inset(0 0 0 0 round 999px 999px 0 0); }
+}
+
+/* Framed photos are uncovered from the bottom */
+@keyframes mask-up {
+    from { clip-path: inset(100% 0 0 0); }
+    to   { clip-path: inset(0); }
+}
+
+/* Slow moving light in the dark contact section */
+@keyframes light-drift {
+    from { background-position: 0% 0%, 100% 100%, 0 0; }
+    to   { background-position: 60% 40%, 40% 60%, 0 0; }
+}
+
+/* =====================================================================
+   PREMIUM ANIMATIONS (used by premium.css)
+   They use "translate" / "rotate" instead of "transform", so they can run
+   at the same time as the scroll reveal (which uses "transform").
+   ===================================================================== */
+
+/* Small photos and badges float gently up and down */
+@keyframes float-soft {
+    from { translate: 0 0; }
+    to   { translate: 0 -12px; }
+}
+
+/* Background drawings (floor plan) drift very slowly */
+@keyframes drift-soft {
+    from { translate: 0 0; rotate: -3deg; }
+    to   { translate: 14px -10px; rotate: 2deg; }
+}
+
+/* A photo starts slightly zoomed in and settles to its normal size */
+@keyframes zoom-settle {
+    from { scale: 1.14; }
+    to   { scale: 1; }
+}
+
+/* Small labels (hero chips) rise into place one after another */
+@keyframes chip-in {
+    from { opacity: 0; translate: 0 14px; }
+    to   { opacity: 1; translate: 0 0; }
+}
+
+/* Soft gold glow that breathes around a round icon */
+@keyframes ring-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(var(--gold-rgb), 0.35); }
+    50%      { box-shadow: 0 0 0 10px rgba(var(--gold-rgb), 0); }
+}
+
+/* Soft fade between pages when a menu link is clicked (supported browsers only) */
+@supports (view-transition-name: root) {
+    @view-transition { navigation: auto; }
+    ::view-transition-old(root) { animation: .28s ease both page-leave; }
+    ::view-transition-new(root) { animation: .42s .05s ease both page-arrive; }
+    @keyframes page-leave { to { opacity: 0; filter: blur(3px); } }
+    @keyframes page-arrive { from { opacity: 0; filter: blur(3px); } to { opacity: 1; filter: blur(0); } }
+}

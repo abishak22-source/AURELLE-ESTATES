@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic page information for browsers and search engines -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thoughtfully chosen homes across Chennai, from Adyar and Nungambakkam to the East Coast Road and OMR.">
+    <meta name="theme-color" content="#263b32">
+    <link rel="icon" type="image/svg+xml" href="IMAGES/abi-estates-mark.svg">
+    <title>ABI Estates | Considered Homes in Chennai</title>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ABI Estates">
+    <meta property="og:title" content="ABI Estates | Considered Homes in Chennai">
+    <meta property="og:description" content="Considered homes across Chennai, from Adyar and Besant Nagar to the East Coast Road and OMR, with personal guidance from first visit to keys.">
+    <!-- First hero photo: start downloading it straight away -->
+    <link rel="preload" as="image" href="IMAGES/chennai-home-1600.webp">
+
+    <!-- Fonts from Google Fonts: Libre Baskerville (headings) + Manrope (menus, labels, buttons, text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&amp;family=Manrope:wght@400..800&amp;display=swap">
+    <!-- Styles: split by topic. Keep this order: a later file wins when two rules clash (the first file is CSS/variables.css) -->
+    <link rel="stylesheet" href="CSS/variables.css">
+    <link rel="stylesheet" href="CSS/base.css">
+    <link rel="stylesheet" href="CSS/header-hero.css">
+    <link rel="stylesheet" href="CSS/home-sections.css">
+    <link rel="stylesheet" href="CSS/animations.css">
+    <link rel="stylesheet" href="CSS/responsive.css">
+    <link rel="stylesheet" href="CSS/inner-pages.css">
+    <link rel="stylesheet" href="CSS/refinements.css">
+    <link rel="stylesheet" href="CSS/effects.css">
+    <link rel="stylesheet" href="CSS/typography.css">
+    <!-- Premium design layer: loaded LAST, so it wins over the files above -->
+    <link rel="stylesheet" href="CSS/premium.css">
+
+    <!-- "defer" runs the scripts in this order after the page is read -->
+    <script src="JS/site-config.js" defer></script>
+    <script src="JS/properties-data.js" defer></script>
+    <script src="JS/core.js" defer></script>
+    <script src="JS/home.js" defer></script>
+    <script src="JS/enquiry.js" defer></script>
+</head>
+<body data-page="home" data-root="">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="progress-bar" id="progress-bar" aria-hidden="true">
+    </div>
+    <!-- SITE HEADER: logo + menu. The menu links are rebuilt from JS/site-config.js -->
+    <a id="top" class="top-anchor" aria-hidden="true"></a>
+    <header class="site-header" id="site-header">
+        <a class="brand" href="./" aria-label="ABI Estates home">
+            <img class="brand-mark" src="IMAGES/abi-estates-mark.svg" alt="" width="42" height="42">
+            <span class="brand-name">ABI <small>ESTATES</small></span>
+        </a>
+        <!-- Mobile menu button is controlled by JavaScript -->
+        <button class="menu-button" id="menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-menu">
+            <span></span><span></span>
+        </button>
+        <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
+            <a class="nav-link" href="PAGES/about/">About</a>
+            <a class="nav-link" href="PAGES/search/">Find a home</a>
+            <a class="nav-link" href="PAGES/properties/">Properties</a>
+            <a class="nav-link" href="PAGES/approach/">Our approach</a>
+            <a class="nav-link" href="PAGES/journal/">Blogs</a>
+            <a class="nav-link" href="PAGES/contact/">Contact</a>
+            <a class="nav-cta" href="PAGES/contact/#enquiry">Arrange a viewing <span>&nearr;</span></a>
+        </nav>
+    </header>
+    <main id="main">
+        <!-- 1. HERO: slider photos (change the image paths in style="..."), headlines and the quick enquiry form.
+             The slider is controlled by JS/home.js -->
+        <section class="hero" id="hero" aria-labelledby="hero-title">
+            <div class="hero-images" data-parallax="0.06" role="img" aria-label="Modern Chennai home beneath mature shade trees">
+                <div class="hero-slide active" data-description="Modern home beneath mature shade trees" style="background-image: url('IMAGES/chennai-home-1600.webp')" aria-hidden="true">
+                </div>
+                <div class="hero-slide" data-description="Contemporary coastal villa with a garden and pool" style="background-image: url('IMAGES/coastal-villa-1200.webp')" aria-hidden="true">
+                </div>
+                <div class="hero-slide" data-description="Garden residence with timber screens" style="background-image: url('IMAGES/garden-residence-1200.webp')" aria-hidden="true">
+                </div>
+                <div class="hero-slide" data-description="Chennai seen from St. Thomas Mount" style="background-image: url('IMAGES/chennai-skyline-1600.webp')" aria-hidden="true">
+                </div>
+            </div>
+            <div class="hero-shade">
+            </div>
+            <svg class="hero-drawing" viewBox="0 0 520 440" fill="none" aria-hidden="true">
+                <circle class="blueprint-orbit" cx="280" cy="220" r="185"></circle>
+                <circle class="blueprint-orbit blueprint-orbit-inner" cx="280" cy="220" r="145"></circle>
+                <path class="drawing-line" d="M105 212 275 92l174 120M145 186v164h270V186M200 350V238h86v112M320 230h56v54h-56zM320 306h56v44h-56zM166 224h30v44h-30zM166 284h30v44h-30z"></path>
+                <path class="drawing-line drawing-line-late" d="M120 365h320M258 92V58h35v58M275 92v-34M98 212h350M302 238v112"></path>
+                <circle class="drawing-dot" cx="275" cy="92" r="4"></circle>
+                <circle class="drawing-dot drawing-dot-late" cx="415" cy="186" r="4"></circle>
+            </svg>
+            <div class="hero-content" aria-live="polite" aria-atomic="true">
+                <div class="hero-panel active" data-hero-panel="0">
+                    <p class="eyebrow light-eyebrow"><span></span> HOMES ACROSS CHENNAI</p>
+                    <h1 id="hero-title">A quieter kind<br>of Chennai <em>living.</em></h1>
+                    <p class="hero-text">Distinctive homes in neighbourhoods we know.<br>Thoughtful guidance, from first visit to keys.</p>
+                    <a class="button button-light" href="#properties">Explore our collection <span>&nearr;</span></a>
+                </div>
+                <div class="hero-panel" data-hero-panel="1" aria-hidden="true">
+                    <p class="eyebrow light-eyebrow"><span></span> EAST COAST ROAD</p>
+                    <h2>Room to breathe.<br><em>Space to belong.</em></h2>
+                    <p class="hero-text">Coastal homes with open skies, thoughtful design and room for everyday life.</p>
+                    <a class="button button-light" href="#properties">Explore coastal homes <span>&nearr;</span></a>
+                </div>
+                <div class="hero-panel" data-hero-panel="2" aria-hidden="true">
+                    <p class="eyebrow light-eyebrow"><span></span> ADYAR &amp; BESANT NAGAR</p>
+                    <h2>Find your calm<br><em>in the city.</em></h2>
+                    <p class="hero-text">Leafy streets, familiar neighbourhoods and homes chosen with care.</p>
+                    <a class="button button-light" href="#properties">Discover the collection <span>&nearr;</span></a>
+                </div>
+                <div class="hero-panel" data-hero-panel="3" aria-hidden="true">
+                    <p class="eyebrow light-eyebrow"><span></span> CITY HOMES, CONSIDERED</p>
+                    <h2>Closer to it all.<br><em>Made to feel yours.</em></h2>
+                    <p class="hero-text">Explore well-appointed residences across Chennai's most loved addresses.</p>
+                    <a class="button button-light" href="#properties">Find your Chennai home <span>&nearr;</span></a>
+                </div>
+                <!-- HOME TYPE CHIPS: small glass labels with icons under every headline.
+                     To change an icon, change icon-villa / icon-building / icon-penthouse (see ICONS in CSS/premium.css) -->
+                <ul class="hero-highlights" aria-label="Home types">
+                    <li><span class="icon icon-villa" aria-hidden="true"></span>Private villas</li>
+                    <li><span class="icon icon-building" aria-hidden="true"></span>Luxury apartments</li>
+                    <li><span class="icon icon-penthouse" aria-hidden="true"></span>Penthouses</li>
+                </ul>
+            </div>
+            <!-- Sent by JS/enquiry.js. Keep the name="..." values (database + emails use them). -->
+            <form class="hero-enquiry" id="hero-enquiry" data-enquiry-form aria-label="Quick property enquiry">
+                <p class="hero-enquiry-kicker">A MORE PERSONAL SEARCH</p>
+                <h2>Find the place that feels <em>right.</em></h2>
+                <label>Your name<input id="hero-name" name="name" required maxlength="120" autocomplete="name" placeholder="Full name"></label>
+                <label>Email address<input id="hero-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+                <label>Phone number<span class="phone-control">
+                    <select id="hero-country-code" name="country_code" aria-label="Country calling code">
+                        <option value="+91" selected>IND +91</option>
+                        <option value="+971">UAE +971</option>
+                        <option value="+966">Saudi Arabia +966</option>
+                        <option value="+974">Qatar +974</option>
+                        <option value="+965">Kuwait +965</option>
+                        <option value="+973">Bahrain +973</option>
+                        <option value="+968">Oman +968</option>
+                        <option value="+1">USA +1</option>
+                        <option value="+44">UK +44</option>
+                        <option value="+65">Singapore +65</option>
+                    </select><input id="hero-phone" name="phone" type="tel" pattern="[0-9 ()+-]{6,20}" title="Numbers only, 6 to 20 digits" placeholder="Phone number">
+                </span></label>
+                <label>Interested in<select id="hero-interest" name="interest">
+                        <option value="">Choose a home type</option>
+                        <option>Private villa</option>
+                        <option>Luxury apartment</option>
+                        <option>Penthouse</option>
+                        <option>Not sure yet</option>
+                    </select></label>
+                <textarea id="hero-message" name="message" rows="2" aria-label="Your message" maxlength="2000" placeholder="Tell us a little about your search"></textarea>
+                <button type="submit">Send an enquiry <span>&nearr;</span></button>
+                <p class="hero-form-message" id="hero-form-message" data-form-message aria-live="polite"></p>
+            </form>
+            <div class="hero-bottom">
+                <span id="slide-counter">01 / 04</span>
+                <span class="hero-location">CHENNAI &nbsp; &middot; &nbsp; INDIA</span>
+                <a href="#intro" class="scroll-hint">SCROLL TO DISCOVER <span>&darr;</span></a>
+            </div>
+            <div class="hero-index">ABI &mdash; 2027</div>
+            <div class="hero-controls" aria-label="Hero image slideshow controls">
+                <button class="hero-button" type="button" id="hero-prev" aria-label="Previous image">&#8592;</button>
+                <div class="hero-dots" role="group" aria-label="Choose a background image">
+                    <button type="button" class="active" data-hero-slide="0" aria-label="Show image 1" aria-pressed="true"></button>
+                    <button type="button" data-hero-slide="1" aria-label="Show image 2" aria-pressed="false"></button>
+                    <button type="button" data-hero-slide="2" aria-label="Show image 3" aria-pressed="false"></button>
+                    <button type="button" data-hero-slide="3" aria-label="Show image 4" aria-pressed="false"></button>
+                </div>
+                <button class="hero-button" type="button" id="hero-next" aria-label="Next image">&#8594;</button>
+                <button class="hero-button hero-play-toggle" type="button" id="hero-pause" aria-label="Pause slideshow" aria-pressed="false"><span aria-hidden="true"></span></button>
+            </div>
+        </section>
+        <aside class="quick-contact" aria-label="Quick contact">
+            <a href="#contact"><span class="quick-contact-icon" aria-hidden="true">&#9993;</span><span>Enquire</span></a>
+            <a href="#properties"><span class="quick-contact-icon" aria-hidden="true">&#8962;</span><span>Properties</span></a>
+        </aside>
+        <div class="neighbourhood-strip" aria-label="Homes across Chennai neighbourhoods">
+            <div class="strip-track">
+                <div class="strip-group">
+                    <span>ADYAR</span><i></i><span>BESANT NAGAR</span><i></i><span>EAST COAST ROAD</span><i></i><span>NUNGAMBAKKAM</span><i></i><span>OMR</span><i></i>
+                </div>
+                <div class="strip-group" aria-hidden="true">
+                    <span>ADYAR</span><i></i><span>BESANT NAGAR</span><i></i><span>EAST COAST ROAD</span><i></i><span>NUNGAMBAKKAM</span><i></i><span>OMR</span><i></i>
+                </div>
+            </div>
+        </div>
+        <!-- 2. POINT OF VIEW: intro text, photo and the numbers row (the numbers count up, see core.js) -->
+        <section class="intro section-padding" id="intro">
+            <div class="intro-label reveal reveal-left">
+                <p class="eyebrow">01 / THE ABI POINT OF VIEW</p>
+                <span class="vertical-line"></span>
+                <!-- PHOTO COLLAGE: the framed photo, a smaller second photo on top of it,
+                     and a floor plan drawing behind them (the drawing is added in CSS/premium.css) -->
+                <div class="intro-collage">
+                    <figure class="intro-photo">
+                        <img src="IMAGES/chennai-apartment-800.webp" srcset="IMAGES/chennai-apartment-800.webp 800w, IMAGES/chennai-apartment-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 50vw" alt="Modern apartment facade with a charcoal and white exterior" width="800" height="533" loading="lazy" decoding="async">
+                        <figcaption><span>CHENNAI</span><span>A PLACE TO CALL HOME</span></figcaption>
+                    </figure>
+                    <!-- Second photo: change the image path to use another photo from the IMAGES folder -->
+                    <figure class="intro-inset">
+                        <img src="IMAGES/chennai-hiranandani-parks-800.webp" alt="Residential towers set among lawns and palm trees in Chennai" width="800" height="533" loading="lazy" decoding="async">
+                    </figure>
+                </div>
+            </div>
+            <div class="intro-main reveal">
+                <h2 class="section-title">Not simply a property.<br><em>A place in Chennai to call your own.</em></h2>
+                <div class="intro-bottom">
+                    <p>A home is more than its address. It is the route you take each morning, the light that fills your living room and the neighbourhood that starts to feel familiar. Explore the character of each Chennai location and find a place that fits your everyday life.</p>
+                    <a class="text-link" href="#approach">Discover our approach <span>&nearr;</span></a>
+                </div>
+                <ul class="stats-band" aria-label="ABI Estates in numbers">
+                    <!-- Each label starts with a small icon (icon-building, icon-pin, ...). See ICONS in CSS/premium.css -->
+                    <li><span class="stat-number" data-stat="homes" data-count="9">09</span><span class="stat-label"><span class="icon icon-building" aria-hidden="true"></span>Residences</span><p class="stat-detail">A considered collection of homes, ready to explore.</p></li>
+                    <li><span class="stat-number" data-stat="areas" data-count="9">09</span><span class="stat-label"><span class="icon icon-pin" aria-hidden="true"></span>Chennai neighbourhoods</span><p class="stat-detail">From leafy city streets to the coast and OMR.</p></li>
+                    <li><span class="stat-number" data-stat="types" data-count="3">03</span><span class="stat-label"><span class="icon icon-villa" aria-hidden="true"></span>Home styles</span><p class="stat-detail">Villas, apartments and penthouses to compare.</p></li>
+                    <li><span class="stat-number" data-count="6">06</span><span class="stat-label"><span class="icon icon-calendar" aria-hidden="true"></span>Days a week to visit</span><p class="stat-detail">Arrange a viewing Monday through Saturday.</p></li>
+                </ul>
+            </div>
+            <div class="intro-number">A / 01</div>
+        </section>
+        <!-- 3. SEARCH: handled by JS/home.js. The option values must match "area" and "type" in JS/properties-data.js -->
+        <section class="search-section section-padding" id="search" aria-labelledby="discovery-title">
+            <div class="section-heading reveal">
+                <div>
+                    <p class="eyebrow">A MORE THOUGHTFUL SEARCH</p>
+                    <h2 class="section-title" id="discovery-title">Find your place in<br><em>the city you love.</em></h2>
+                </div>
+                <p class="heading-note">Explore homes across established Chennai neighbourhoods. Filter by location, home type and bedrooms to make your first shortlist clearer, then compare each residence at your own pace.</p>
+            </div>
+            <form class="search-panel reveal" id="property-search">
+                <label class="search-field">
+                    <span><span class="icon icon-pin" aria-hidden="true"></span>LOCATION</span>
+                    <select id="location-filter" name="location">
+                        <option value="all">All locations</option>
+                        <option value="adyar">Adyar</option>
+                        <option value="ecr">ECR</option>
+                        <option value="omr">OMR</option>
+                        <option value="nungambakkam">Nungambakkam</option>
+                        <option value="besant-nagar">Besant Nagar</option>
+                        <option value="kilpauk">Kilpauk</option>
+                        <option value="kotturpuram">Kotturpuram</option>
+                        <option value="alwarpet">Alwarpet</option>
+                        <option value="mylapore">Mylapore</option>
+                    </select>
+                </label>
+                <label class="search-field">
+                    <span><span class="icon icon-building" aria-hidden="true"></span>PROPERTY TYPE</span>
+                    <select id="type-filter" name="type">
+                        <option value="all">Any residence</option>
+                        <option value="villa">Private villa</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="penthouse">Penthouse</option>
+                    </select>
+                </label>
+                <label class="search-field">
+                    <span><span class="icon icon-bed" aria-hidden="true"></span>BEDROOMS</span>
+                    <select id="bedroom-filter" name="bedrooms">
+                        <option value="all">Any</option>
+                        <option value="3">3+ bedrooms</option>
+                        <option value="4">4+ bedrooms</option>
+                        <option value="5">5+ bedrooms</option>
+                    </select>
+                </label>
+                <button class="search-button" type="submit">Find a home <span>&nearr;</span></button>
+            </form>
+            <p class="search-message" id="search-message" aria-live="polite">Showing our selected residences.</p>
+            <button class="search-reset" id="reset-search" type="button">Clear filters</button>
+        </section>
+        <!-- 4. THE COLLECTION: the cards are built from JS/properties-data.js -->
+        <section class="properties section-padding" id="properties">
+            <div class="section-heading properties-heading reveal">
+                <div>
+                    <p class="eyebrow">02 / THE COLLECTION</p>
+                    <h2 class="section-title">Chennai homes with<br><em>a sense of place.</em></h2>
+                    <p class="properties-intro">From quiet garden villas to well-planned city apartments, each residence is presented with its location, layout and key details so you can compare the homes that suit your search.</p>
+                </div>
+                <div class="collection-heading-note">
+                    <p class="eyebrow">A HOME FOR EVERY CHAPTER</p>
+                    <h3>Find a place that feels like yours.</h3>
+                    <p>Compare considered villas, apartments and penthouses across the city.</p>
+                    <a class="text-link" href="#contact">Enquire about a property <span>&nearr;</span></a>
+                </div>
+            </div>
+            <div class="property-grid" id="property-grid">
+                <!-- JavaScript inserts property cards into this container -->
+            </div>
+            <div class="collection-controls">
+                <button class="collection-arrow" id="collection-prev" type="button" aria-label="Previous homes">&larr;</button><span class="collection-count" id="collection-count">01 - 03 / 09</span><button class="collection-arrow" id="collection-next" type="button" aria-label="Next homes">&rarr;</button>
+            </div>
+            <p class="sample-note">Sample residences for illustration. Photographs are representative and do not show the listed homes.</p>
+        </section>
+        <!-- 5. OUR APPROACH: the photo is set in CSS/home-sections.css (.approach-image) -->
+        <section class="approach" id="approach">
+            <div class="approach-image reveal" role="img" aria-label="Sculptural modern residence with natural stone and greenery">
+            </div>
+            <!-- Small interior photo that overlaps the big photo (hidden on small phones, see CSS/premium.css) -->
+            <figure class="approach-inset reveal">
+                <img src="IMAGES/chennai-living-800.webp" alt="Light-filled living room with timber finishes" width="800" height="544" loading="lazy" decoding="async">
+            </figure>
+            <div class="approach-text reveal">
+                <p class="eyebrow">03 / THE ART OF CHOOSING WELL</p>
+                <h2 class="section-title">Designed for the city.<br><em>Easy to call home.</em></h2>
+                <p>We look beyond the listing: light, ventilation, shaded outdoor space and the character of each neighbourhood. Every home is considered for the way people live in Chennai. We also help you look closely at the layout, practical details and the feeling of the surrounding streets before you decide what to visit.</p>
+                <a class="button button-dark" href="#contact">Talk to our team <span>&nearr;</span></a>
+                <span class="approach-label">ABI / PERSPECTIVE 01</span>
+            </div>
+        </section>
+        <!-- 6. THE ABI DIFFERENCE: three principles (each with an icon) and two layered photos -->
+        <section class="principles section-padding">
+            <div class="principles-intro reveal">
+                <p class="eyebrow">THE ABI DIFFERENCE</p>
+                <h2 class="section-title">Good decisions<br>begin with <em>good people.</em></h2>
+                <figure class="principles-visual reveal reveal-right">
+                    <img data-parallax="0.07" src="IMAGES/garden-residence-800.webp" srcset="IMAGES/garden-residence-800.webp 800w, IMAGES/garden-residence-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 50vw" alt="A timber and glass home framed by greenery" width="800" height="533" loading="lazy" decoding="async">
+                    <figcaption><span>ABI ESTATES</span><span>CHENNAI / A SENSE OF PLACE</span></figcaption>
+                </figure>
+                <!-- Second photo that overlaps the framed photo. Change the path to use another photo. -->
+                <figure class="principles-inset reveal">
+                    <img src="IMAGES/chennai-bedroom-800.webp" alt="Calm bedroom with garden views through tall glass doors" width="800" height="533" loading="lazy" decoding="async">
+                </figure>
+            </div>
+            <div class="principle-list">
+                <article class="principle reveal">
+                    <span class="principle-icon" aria-hidden="true"><span class="icon icon-gem"></span></span>
+                    <span class="principle-number">01</span>
+                    <div>
+                        <h3>Considered selection</h3>
+                        <p>Each home is selected for its setting, design and day-to-day comfort, creating a focused collection that is easier to explore.</p>
+                    </div>
+                    <span class="principle-arrow" aria-hidden="true">&nearr;</span>
+                </article>
+                <article class="principle reveal">
+                    <span class="principle-icon" aria-hidden="true"><span class="icon icon-compass"></span></span>
+                    <span class="principle-number">02</span>
+                    <div>
+                        <h3>Personal guidance</h3>
+                        <p>From your first questions to arranging a visit, we keep the search personal and explain each step in clear, useful terms.</p>
+                    </div>
+                    <span class="principle-arrow" aria-hidden="true">&nearr;</span>
+                </article>
+                <article class="principle reveal">
+                    <span class="principle-icon" aria-hidden="true"><span class="icon icon-plan"></span></span>
+                    <span class="principle-number">03</span>
+                    <div>
+                        <h3>Details that matter</h3>
+                        <p>We look beyond first impressions to the layout, light, storage, access and neighbourhood details that shape daily life.</p>
+                    </div>
+                    <span class="principle-arrow" aria-hidden="true">&nearr;</span>
+                </article>
+            </div>
+        </section>
+        <!-- 7. NOTES ON LIVING: blog previews. The photos are set in CSS/home-sections.css (.journal-image-one / -two) -->
+        <section class="journal section-padding" id="journal">
+            <div class="journal-top reveal">
+                <div>
+                    <p class="eyebrow">04 / NOTES ON LIVING</p>
+                    <h2 class="section-title">The considered<br><em>life.</em></h2>
+                </div>
+                <p>Ideas, places and perspectives for living beautifully. Read thoughtful notes on materials, neighbourhoods and the small choices that make a residence feel personal.</p>
+            </div>
+            <div class="journal-grid">
+                <article class="journal-card journal-card-large reveal">
+                    <div class="journal-image journal-image-one">
+                    </div>
+                    <p class="eyebrow">ARCHITECTURE / 05 MIN READ</p>
+                    <h3>The quiet confidence<br>of natural materials.</h3>
+                    <p class="blog-excerpt">Natural materials bring warmth, texture and a lasting sense of calm. See how stone, timber and daylight can shape the feeling of a room.</p>
+                    <a class="text-link" href="PAGES/journal/">Explore the story <span>&nearr;</span></a>
+                </article>
+                <article class="journal-card reveal">
+                    <div class="journal-image journal-image-two">
+                    </div>
+                    <p class="eyebrow">NEIGHBOURHOODS / 04 MIN READ</p>
+                    <h3>Finding your rhythm<br>along the coast.</h3>
+                    <p class="blog-excerpt">Life by the coast has its own pace. Explore the everyday details that make Chennai neighbourhoods along the coast distinct.</p>
+                    <a class="text-link" href="PAGES/journal/">Explore the story <span>&nearr;</span></a>
+                </article>
+            </div>
+        </section>
+        <!-- 8. CONTACT: email address and opening hours. The night photo and skyline drawing behind it are set in CSS/premium.css (part 11) -->
+        <section class="contact section-padding" id="contact">
+            <div class="contact-heading reveal">
+                <p class="eyebrow light-eyebrow">05 / BEGIN A CONVERSATION</p>
+                <h2 class="section-title">Somewhere<br>feels <em>like you.</em></h2>
+                <p>Tell us what you are looking for, what matters most in a home and where you hope to live. We will help you work out a comfortable next step.</p>
+                <a class="contact-email" href="mailto:hello@abiestates.in"><span class="icon icon-mail" aria-hidden="true"></span>hello@abiestates.in </a>
+            </div>
+            <div class="contact-details reveal">
+                <p class="eyebrow light-eyebrow">WE&rsquo;RE HERE WHEN YOU&rsquo;RE READY</p>
+                <h3>A thoughtful conversation is a good place to begin.</h3>
+                <p>Ask us about a residence, arrange a private viewing, or share the kind of home and location you have in mind. We can help you compare the details and plan what to see.</p>
+                <p class="contact-hours">Chennai, Tamil Nadu<br>Monday &ndash; Saturday &middot; 9:00 am &ndash; 6:00 pm</p>
+                <a class="button button-light" href="PAGES/contact/#enquiry">Send an enquiry </a>
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER: the three links are rebuilt from footerLinks in JS/site-config.js.
+         The dark background and the Chennai skyline drawing are set in CSS/premium.css (part 12) -->
+    <footer class="site-footer">
+        <a class="brand footer-brand" href="#top">
+            <img class="brand-mark" src="IMAGES/abi-estates-mark.svg" alt="" width="42" height="42">
+            <span class="brand-name">ABI <small>ESTATES</small></span>
+        </a>
+        <p>Considered homes.<br>Meaningful beginnings.</p>
+        <div class="footer-links">
+            <a class="nav-link" href="PAGES/properties/">Properties</a><a class="nav-link" href="PAGES/approach/">Our approach</a><a class="nav-link" href="PAGES/contact/">Contact</a>
+        </div>
+        <span class="copyright">&copy; 2026 ABI ESTATES &middot; WEBSITE &middot; <a href="PAGES/credits/">PHOTO CREDITS</a></span>
+        <a class="back-top" href="#top" aria-label="Back to top">&uarr;</a>
+    </footer>
+</body>
+</html>

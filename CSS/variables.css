@@ -1,0 +1,95 @@
+/* =====================================================================
+   ABI ESTATES - variables.css
+   ★ START HERE FOR STYLE CHANGES. Colours, font, text sizes and the space on
+   the left/right of the page. Change a value here and it changes everywhere.
+
+   Load order (the same on every page; a later file wins when two rules clash):
+      variables > base > header-hero > home-sections > animations >
+      responsive > inner-pages > refinements > effects > typography > premium
+   ===================================================================== */
+
+/* =====================================================================
+   COLOURS, FONT, SPACING + TEXT SIZES (VARIABLES)
+   Change a value here and it changes everywhere it is used.
+   ===================================================================== */
+:root {
+    /* Colours: change these colour codes to change the colours of the whole page */
+    --paper: #f5f1e9;      /* main limestone background */
+    --paper-deep: #eae2d4;  /* darker cream for alternate sections */
+    --white: #fffdf8;       /* warm gallery white */
+    --ink: #202923;         /* deep green-black text */
+    --muted: #62675f;       /* softer text colour */
+    --line: rgba(var(--ink-rgb), 0.17); /* thin divider lines */
+    --bronze: #96563e;      /* accent colour (burnished clay) */
+    --gold: #c8a46a;        /* restrained antique gold */
+    --light-gold: #ead09b;  /* gold used on dark backgrounds */
+    --palm: #20392f;        /* deep forest green */
+
+    /* Fonts (loaded from Google Fonts in the <head> of every page).
+       --font-display = big headings, card titles, prices (elegant serif)
+       --font-ui      = menus, labels, buttons, forms and paragraphs (clean, modern)
+       To try another Google font: change the <link> in the HTML <head>, then the name here. */
+    --font-display: "Libre Baskerville", Georgia, serif;
+    --font-ui: "Manrope", "Segoe UI", Arial, sans-serif;
+    /* The older CSS files use --font for normal text, menus and buttons */
+    --font: var(--font-ui);
+
+    /* Space on the left and right of each section.
+       clamp(min, preferred, max) = grows with the screen, but stays between min and max.
+       Change these values to give the page more or less side space. */
+    --page-gutter: clamp(22px, 6.2vw, 104px);
+
+    /* The same colours as "red, green, blue" numbers, for see-through versions:
+       rgba(var(--gold-rgb), 0.5) = gold at 50%. Keep them matching the colours above. */
+    --gold-rgb: 200, 164, 106;
+    --light-gold-rgb: 234, 208, 155;
+    --bronze-rgb: 150, 86, 62;
+    --palm-rgb: 32, 57, 47;
+    --ink-rgb: 32, 41, 35;
+    --white-rgb: 255, 253, 248;
+    --paper-rgb: 245, 241, 233;
+
+    /* Typography system (applied in typography.css).
+       Headings and body text use the existing --font family. */
+    --weight-display: 600;          /* big headings */
+    --weight-display-small: 500;    /* card and small headings */
+    --weight-label: 700;            /* labels, buttons, menu */
+    --leading-display: 1.04;        /* line height of big headings */
+    --leading-heading: 1.2;         /* line height of small headings */
+    --leading-body: 1.75;           /* line height of paragraphs */
+    --tracking-display: -0.025em;   /* letter spacing of big headings */
+    --tracking-label: 0.2em;        /* letter spacing of small uppercase labels */
+    --tracking-button: 0.12em;      /* letter spacing of buttons */
+    --label-size: 11.5px;           /* small uppercase labels */
+    --button-size: 12.5px;          /* button text */
+    --card-title-size: clamp(22px, 2vw, 28px);   /* property, journal and feature card titles */
+    --sub-title-size: clamp(28px, 3.2vw, 44px);  /* smaller section headings */
+
+    /* Text sizes: change them here to resize text across the whole site */
+    --text-size: 17px;                                      /* normal text */
+    --title-size: clamp(40px, 5vw, 70px);                   /* section headings */
+    --hero-title-size: clamp(56px, min(7.5vw, 12svh), 96px); /* big hero headline */
+    --page-title-size: clamp(48px, 7vw, 88px);              /* inner page headlines */
+
+    /* ---------- PREMIUM DESIGN SYSTEM (used by premium.css) ---------- */
+    /* Extra colours */
+    --forest-deep: #12231c;          /* darkest green: contact section and footer */
+    --forest-deep-rgb: 18, 35, 28;   /* the same colour as numbers, for see-through versions */
+    --cream-glass: rgba(255, 253, 248, 0.78);   /* see-through white for "glass" panels */
+
+    /* Rounded corners: 0px = sharp corners, bigger = rounder */
+    --radius-small: 8px;    /* inputs, small chips */
+    --radius: 16px;         /* cards and panels */
+    --radius-large: 24px;   /* big glass panels */
+
+    /* Shadows: softer -> stronger */
+    --shadow-soft: 0 10px 30px rgba(var(--palm-rgb), 0.08);
+    --shadow-card: 0 22px 55px rgba(var(--palm-rgb), 0.13);
+    --shadow-lift: 0 34px 80px rgba(var(--palm-rgb), 0.22);
+
+    /* Gold gradient used on buttons, lines and highlights */
+    --gold-gradient: linear-gradient(120deg, #f3d79c 0%, #d6a959 48%, #b88a43 100%);
+
+    /* Motion: a smooth "slow at the end" curve for animations */
+    --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+}

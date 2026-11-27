@@ -1,0 +1,562 @@
+/* =====================================================================
+   ABI ESTATES - effects.css
+   PREMIUM VISUAL EFFECTS for every page:
+      1. Film grain     2. Headline word reveal     3. Big outline section numbers
+      4. Arched photos on inner page banners (change the photos here)
+      5. Image hover    6. Dark section light      7. Button arrows
+      8. Phones + reduced motion     9. Gallery frames around photos
+     10. Properties page text sizes
+
+   Load order (the same on every page; a later file wins when two rules clash):
+      variables > base > header-hero > home-sections > animations >
+      responsive > inner-pages > refinements > effects > typography > premium
+   ===================================================================== */
+
+/* ---------- 1. FILM GRAIN + DEPTH ---------- */
+/* A very faint grain over the whole page gives photos and colours a printed, editorial feel */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.section-title {
+    letter-spacing: -0.045em;
+}
+
+
+/* ---------- 2. HEADLINE WORD REVEAL ----------
+   core.js wraps each word of the big headlines in two spans.
+   The inner span slides up from below a mask when the headline is revealed. */
+.word {
+    display: inline-block;
+    overflow: hidden;
+    /* extra room so italic letters (which lean outside their box) and g, p, y are not cut off */
+    padding: 0 0.12em 0.1em 0.04em;
+    margin: 0 -0.12em -0.1em -0.04em;
+    vertical-align: bottom;
+}
+
+.word-inner {
+    display: inline-block;
+    transform: translateY(108%);
+    transition: transform 1.05s cubic-bezier(0.19, 1, 0.22, 1);
+    transition-delay: calc(var(--word, 0) * 55ms);
+}
+
+.is-revealed .word-inner,
+.hero-panel.active .word-inner {
+    transform: none;
+}
+
+/* the hero headline waits for the photo to open */
+.hero-panel.active .word-inner {
+    transition-delay: calc(0.25s + var(--word, 0) * 70ms);
+}
+
+
+/* ---------- 3. ARCHITECTURAL SKETCH DETAILS ----------
+   Hand-drawn property illustrations fill the open space beside headings. */
+
+.section-heading,
+.principles-intro,
+.journal-top,
+.intro-main {
+    position: relative;
+}
+
+.section-heading::before,
+.principles-intro::before,
+.journal-top::before,
+.intro-main::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -2%;
+    z-index: -1;
+    width: clamp(150px, 23vw, 320px);
+    aspect-ratio: 1;
+    background: url("../IMAGES/sketch-villa.svg") center / contain no-repeat;
+    opacity: .3;
+    transform: translateY(-50%) rotate(-5deg);
+    pointer-events: none;
+    transition: opacity 1.2s ease, transform 1.4s cubic-bezier(.19,1,.22,1);
+}
+
+.section-heading.visible::before,
+.section-heading.is-revealed::before,
+.principles-intro.visible::before,
+.principles-intro.is-revealed::before,
+.journal-top.visible::before,
+.intro-main.visible::before {
+    opacity: .3;
+    transform: translateY(-50%) rotate(-5deg);
+}
+
+.hide-section-number::before { display: none; }
+
+/* Give the ABI Difference heading its own hand-drawn key illustration. */
+.principles-intro::before { background-image: url("../IMAGES/sketch-key.svg"); right: 1%; }
+
+/* The home introduction gets a floor plan sketch. */
+.intro-main::before { background-image: url("../IMAGES/sketch-floorplan.svg"); }
+
+.standalone-page .page-image-story {
+    position: relative;
+    isolation: isolate;
+}
+
+.standalone-page .page-image-story::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -7%;
+    z-index: -1;
+    width: clamp(150px, 22vw, 300px);
+    aspect-ratio: 1;
+    background: url("../IMAGES/sketch-skyline.svg") center / contain no-repeat;
+    opacity: .26;
+    transform: translateY(-50%) rotate(4deg);
+    pointer-events: none;
+}
+
+.standalone-page .page-image-story:nth-of-type(even)::before { background-image: url("../IMAGES/sketch-garden.svg"); }
+.standalone-page .page-image-story:nth-of-type(3n)::before { background-image: url("../IMAGES/sketch-floorplan.svg"); }
+
+/* Give successive editorial headings a changing architectural sketch. */
+.page-main .section-heading:nth-of-type(2)::before { background-image: url("../IMAGES/sketch-floorplan.svg"); }
+.page-main .section-heading:nth-of-type(3)::before { background-image: url("../IMAGES/sketch-garden.svg"); }
+.page-main .section-heading:nth-of-type(4)::before { background-image: url("../IMAGES/sketch-skyline.svg"); }
+
+@media (max-width: 760px) {
+    .section-heading::before,
+    .principles-intro::before,
+    .journal-top::before,
+    .intro-main::before,
+    .standalone-page .page-image-story::before {
+        width: clamp(120px, 37vw, 190px);
+        right: -5%;
+        opacity: .18;
+    }
+}
+
+/* keep the real text above the number */
+.section-heading > *,
+.journal-top > *,
+.intro-main > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ---------- 4. INNER PAGE HEROES: ARCHED PHOTO COMPOSITION ----------
+   The text keeps the left side; a photo in an architectural arch fills the
+   right side, framed by a thin gold ring. Each page gets its own photo. */
+/* The Properties page has its own hero picture, so it keeps its own design. */
+.page-hero:not(.properties-page-hero) {
+    min-height: clamp(440px, 62vh, 600px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: calc(var(--page-gutter) + min(40%, 520px) + 40px);
+}
+
+/* Replaces the decorative circle: same slot, now an arched photo */
+.page-hero:not(.properties-page-hero)::before {
+    top: 36px;
+    right: var(--page-gutter);
+    bottom: 0;
+    z-index: 0;
+    width: min(38%, 500px);
+    height: auto;
+    aspect-ratio: auto;
+    border: 0;
+    border-radius: 999px 999px 0 0;
+    background: var(--paper-deep) center / cover no-repeat;
+    -webkit-mask-image: none;
+    mask-image: none;
+    opacity: 1;
+    transform: none;
+    box-shadow: 0 0 0 10px var(--paper), 0 0 0 11px rgba(var(--gold-rgb), 0.7), 0 40px 80px rgba(var(--palm-rgb), 0.18);
+    animation: arch-open 1.6s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+body[data-page="about"]    .page-hero::before { background-image: url("../IMAGES/chennai-skyline-1600.webp"); }
+body[data-page="search"]   .page-hero::before { background-image: url("../IMAGES/chennai-omr-navalur-1600.webp"); }
+body[data-page="approach"] .page-hero::before { background-image: url("../IMAGES/garden-residence-1200.webp"); }
+body[data-page="journal"]  .page-hero::before { background-image: url("../IMAGES/chennai-dining-1200.webp"); }
+body[data-page="contact"]  .page-hero::before { background-image: url("../IMAGES/chennai-besant-nagar-1600.webp"); }
+body[data-page="credits"]  .page-hero::before { background-image: url("../IMAGES/chennai-eden-park-1600.webp"); }
+
+.page-hero h1 {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(52px, 7.4vw, 104px);
+    letter-spacing: -0.05em;
+}
+
+.page-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ---------- 5. IMAGE MASKS + PREMIUM HOVER ---------- */
+/* Framed photos are uncovered from the bottom when they scroll into view */
+.reveal.visible .intro-photo img,
+.principles-visual.visible img,
+.editorial-image.visible img,
+.page-image-story.visible > img,
+.approach-image.visible {
+    animation: mask-up 1.4s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+/* Property cards: slower, deeper zoom, a gold wash and the label slides in */
+.property-image {
+    transition: transform 1.4s cubic-bezier(0.19, 1, 0.22, 1), filter 0.8s;
+}
+
+.property-card:hover .property-image {
+    transform: scale(1.09);
+    filter: saturate(1.05) contrast(1.04);
+}
+
+.property-image-wrap::after {
+    background: linear-gradient(180deg, transparent 55%, rgba(var(--palm-rgb), 0.45));
+    border-color: rgba(var(--white-rgb), 0.6);
+}
+
+/* Feature cards: image zooms inside the card, text lifts */
+.page-feature-card {
+    overflow: hidden;
+}
+
+.page-feature-card img {
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1), filter 0.8s;
+}
+
+.page-feature-card:hover img {
+    transform: scale(1.06);
+    filter: saturate(1.08);
+}
+
+.journal-card .journal-image {
+    transition: background-size 1.4s cubic-bezier(0.19, 1, 0.22, 1), transform 0.55s, box-shadow 0.55s;
+    background-size: 108%;
+}
+
+.journal-card:hover .journal-image {
+    background-size: 118%;
+}
+
+
+/* ---------- 6. DARK SECTIONS: SLOW ANIMATED LIGHT ---------- */
+.contact {
+    background-image:
+        radial-gradient(ellipse 50% 60% at 15% 20%, rgba(var(--gold-rgb), 0.22), transparent 70%),
+        radial-gradient(ellipse 45% 55% at 90% 80%, rgba(118, 151, 119, 0.2), transparent 70%),
+        linear-gradient(135deg, #1d2f27, var(--palm) 55%, #2c4639);
+    background-size: 180% 180%, 180% 180%, 100% 100%;
+    animation: light-drift 26s ease-in-out infinite alternate;
+}
+
+.neighbourhood-strip {
+    background: linear-gradient(90deg, #1f3129, var(--palm), #1f3129);
+}
+
+
+/* ---------- 7. BUTTONS + LINKS ---------- */
+/* Arrows travel on hover; the main buttons get a thin gold outline that grows outward */
+.button,
+.nav-cta,
+.search-button {
+    transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.45s, color 0.3s, background 0.3s, border-color 0.3s;
+}
+
+.button:hover,
+.nav-cta:hover {
+    box-shadow: 0 0 0 4px rgba(var(--gold-rgb), 0.18), 0 16px 32px rgba(var(--palm-rgb), 0.22);
+}
+
+.button span,
+.nav-cta span,
+.text-link span {
+    display: inline-block;
+    transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.button:hover span,
+.nav-cta:hover span {
+    transform: translate(4px, -4px) rotate(8deg);
+}
+
+
+/* ---------- 8. PHONES + REDUCED MOTION ---------- */
+@media (max-width: 900px) {
+    /* the arch photo sits under the text instead of beside it */
+    .page-hero:not(.properties-page-hero) {
+        min-height: 0;
+        padding-right: var(--page-gutter);
+        padding-bottom: 48px;
+    }
+
+    /* Properties hero: one column on tablets and phones (a later 900px rule in refinements.css
+       otherwise forces two columns and squeezes the text into a narrow strip) */
+    .page-hero.properties-page-hero {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .page-hero.properties-page-hero > * {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .page-hero:not(.properties-page-hero)::before {
+        position: relative;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        order: 5;
+        width: 100%;
+        height: clamp(220px, 52vw, 360px);
+        margin-top: 34px;
+        opacity: 1;
+        border-radius: 260px 260px 0 0;
+    }
+
+    .section-heading::before,
+    .journal-top::before,
+    .intro-main::before {
+        font-size: clamp(90px, 26vw, 150px);
+        top: -0.3em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .word-inner {
+        transform: none;
+        transition: none;
+    }
+
+    .contact {
+        animation: none;
+    }
+
+    .section-heading::before,
+    .journal-top::before,
+    .intro-main::before {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ---------- 9. GALLERY FRAMES ----------
+   Consistent mats, double borders and depth around every framed photo. */
+.intro-photo,
+.principles-visual,
+.editorial-image,
+.properties-hero-art,
+.map-frame {
+    padding: 12px;
+    border: 1px solid rgba(var(--gold-rgb), .9);
+    background: linear-gradient(145deg, var(--white), #eee5d5);
+    box-shadow:
+        0 0 0 5px var(--paper),
+        0 0 0 6px rgba(var(--bronze-rgb), .28),
+        0 24px 58px rgba(var(--palm-rgb), .16),
+        inset 0 0 0 1px rgba(var(--white-rgb), .9);
+}
+
+.intro-photo,
+.principles-visual,
+.editorial-image,
+.properties-hero-art,
+.map-frame,
+.approach-image,
+.page-image-story > img,
+.property-image-wrap,
+.page-property-card .property-image-wrap,
+.journal-image {
+    outline: 1px solid rgba(var(--gold-rgb), .38);
+    outline-offset: 5px;
+    transition: outline-color .45s ease, box-shadow .55s ease, border-color .45s ease;
+}
+
+.intro-photo { padding: 12px; }
+.intro-photo img { border: 1px solid rgba(var(--palm-rgb), .2); }
+.intro-photo:hover,
+.principles-visual:hover,
+.editorial-image:hover,
+.properties-hero-art:hover {
+    outline-color: rgba(var(--bronze-rgb), .72);
+    box-shadow: 0 0 0 5px var(--paper), 0 0 0 7px rgba(var(--gold-rgb), .58), 0 30px 70px rgba(var(--palm-rgb), .2);
+}
+
+.property-image-wrap,
+.page-property-card .property-image-wrap {
+    padding: 8px;
+    border: 1px solid rgba(var(--gold-rgb), .9);
+    background: var(--white);
+    box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px rgba(var(--bronze-rgb), .28), 0 18px 42px rgba(var(--palm-rgb), .16);
+}
+
+.property-image-wrap::after { inset: 17px; border-color: rgba(var(--white-rgb), .9); }
+.property-card:hover .property-image-wrap::after { inset: 22px; }
+
+.editorial-image { padding: 12px; }
+.editorial-image::before {
+    position: absolute;
+    z-index: 2;
+    inset: 16px;
+    content: "";
+    border: 1px solid rgba(var(--white-rgb), .76);
+    pointer-events: none;
+    transition: inset .6s cubic-bezier(.2,.7,.2,1), border-color .4s ease;
+}
+.editorial-image:hover::before { inset: 23px; border-color: rgba(var(--light-gold-rgb), .95); }
+.editorial-image img { border: 1px solid rgba(var(--palm-rgb), .15); }
+
+.approach-image { border-width: 12px; outline-offset: 6px; }
+.approach-image::before { inset: 20px; }
+.approach:hover .approach-image::before { inset: 30px; }
+
+.principles-visual { padding: 12px; }
+.principles-visual::before { inset: 20px; }
+.principles-visual::after { inset: 12px; }
+
+.page-feature-card { padding: 12px 12px 24px; border-color: rgba(var(--gold-rgb), .5); }
+.page-feature-card img {
+    padding: 9px;
+    border: 1px solid rgba(var(--gold-rgb), .9);
+    background: var(--white);
+    box-shadow: inset 0 0 0 1px rgba(var(--palm-rgb), .08), 0 12px 28px rgba(var(--palm-rgb), .1);
+}
+.page-feature-card:hover img { border-color: var(--bronze); }
+
+.page-image-story > img {
+    padding: 12px;
+    border: 1px solid rgba(var(--gold-rgb), .9);
+    outline-offset: 6px;
+    background: linear-gradient(145deg, var(--white), #eee5d5);
+    box-shadow: 0 0 0 5px var(--paper), 0 0 0 6px rgba(var(--bronze-rgb), .25), 0 26px 62px rgba(var(--palm-rgb), .18);
+}
+
+.journal-image {
+    padding: 12px;
+    border: 1px solid rgba(var(--gold-rgb), .92);
+    outline-offset: 5px;
+    background-color: var(--white);
+    box-shadow: 0 0 0 4px var(--paper-deep), 0 0 0 5px rgba(var(--bronze-rgb), .24), 0 18px 42px rgba(var(--palm-rgb), .15);
+}
+.journal-image::before { inset: 18px; border-color: rgba(var(--white-rgb), .9); }
+.journal-card:hover .journal-image::before { inset: 25px; }
+.journal-image > img {
+    position: absolute;
+    z-index: 0;
+    inset: 12px;
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    object-fit: cover;
+    transition: transform 1.1s cubic-bezier(.2,.7,.2,1), filter .65s ease;
+}
+.journal-card:hover .journal-image > img { transform: scale(1.055); filter: saturate(1.06); }
+
+.properties-hero-art { padding: 12px; }
+.properties-hero-art::before { inset: 23px; }
+.properties-hero-art::after { inset: 12px; }
+.map-frame { padding: 12px; outline-offset: 5px; }
+
+.property-card:hover .property-image-wrap,
+.page-property-card:hover .property-image-wrap,
+.journal-card:hover .journal-image,
+.page-image-story:hover > img,
+.approach:hover .approach-image {
+    outline-color: rgba(var(--bronze-rgb), .78);
+    box-shadow: 0 0 0 5px var(--paper), 0 0 0 7px rgba(var(--gold-rgb), .58), 0 28px 62px rgba(var(--palm-rgb), .2);
+}
+
+.page-feature-card:hover img { box-shadow: inset 0 0 0 1px rgba(var(--white-rgb), .9), 0 16px 34px rgba(var(--palm-rgb), .16); }
+
+@media (min-width: 761px) {
+    .map-frame iframe { inset: 12px; width: calc(100% - 24px); height: calc(100% - 24px); }
+}
+
+@media (max-width: 760px) {
+    .intro-photo, .principles-visual, .editorial-image, .properties-hero-art, .map-frame,
+    .page-image-story > img, .property-image-wrap, .page-property-card .property-image-wrap, .journal-image {
+        outline-offset: 3px;
+    }
+    .page-feature-card img { padding: 7px; }
+    .map-frame { padding: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .intro-photo, .principles-visual, .editorial-image, .properties-hero-art, .map-frame,
+    .approach-image, .page-image-story > img, .property-image-wrap, .page-property-card .property-image-wrap, .journal-image,
+    .editorial-image::before { transition: none; }
+}
+
+/* ---------- 10. PROPERTIES PAGE TEXT SIZES ----------
+   Slightly stronger headings and prices on the Properties page only. */
+body[data-page="properties"] .page-hero h1 {
+    font-size: clamp(58px, 7.8vw, 104px);
+    font-weight: 600;
+    letter-spacing: -.055em;
+}
+
+body[data-page="properties"] .page-hero .page-lede {
+    max-width: 46ch;
+    color: var(--ink);
+    font-size: clamp(17px, 1.45vw, 20px);
+    font-weight: 500;
+    line-height: 1.75;
+}
+
+body[data-page="properties"] .page-section-heading .section-title {
+    font-size: clamp(43px, 5vw, 68px);
+    font-weight: 600;
+}
+
+body[data-page="properties"] .page-property-heading h3 {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 2.15vw, 31px);
+    font-weight: 600;
+    line-height: 1.16;
+    letter-spacing: -.035em;
+}
+
+body[data-page="properties"] .page-property-card .property-location {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .015em;
+}
+
+body[data-page="properties"] .page-property-card .property-price {
+    color: var(--palm);
+    font-size: clamp(16px, 1.35vw, 19px);
+    font-weight: 700;
+}
+
+body[data-page="properties"] .page-property-card .property-details span {
+    color: var(--ink);
+    font-size: clamp(11px, 1.05vw, 13px);
+    font-weight: 600;
+}
+
+body[data-page="properties"] .page-feature-card h3 {
+    font-size: clamp(22px, 2vw, 28px);
+    font-weight: 600;
+}
+
+body[data-page="properties"] .page-feature-card p { font-size: 15px; }
+
+@media (max-width: 760px) {
+    body[data-page="properties"] .page-hero h1 { font-size: clamp(48px, 12vw, 68px); }
+    body[data-page="properties"] .page-section-heading .section-title { font-size: clamp(36px, 9vw, 50px); }
+    body[data-page="properties"] .page-property-heading h3 { font-size: 25px; }
+}

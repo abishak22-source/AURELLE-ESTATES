@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#263b32">
+    <link rel="icon" type="image/svg+xml" href="../../IMAGES/abi-estates-mark.svg">
+  <base href="../contact/">
+  <title>Contact | ABI Estates</title>
+  <meta name="description" content="Contact ABI Estates: send an enquiry, arrange a private viewing or find our Chennai office on the map.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ABI Estates">
+  <meta property="og:title" content="Contact | ABI Estates">
+  <meta property="og:description" content="Contact ABI Estates: send an enquiry, arrange a private viewing or find our Chennai office on the map.">
+  <!-- Fonts from Google Fonts: Libre Baskerville (headings) + Manrope (menus, labels, buttons, text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&amp;family=Manrope:wght@400..800&amp;display=swap">
+  <link rel="stylesheet" href="../../CSS/variables.css">
+  <link rel="stylesheet" href="../../CSS/base.css">
+  <link rel="stylesheet" href="../../CSS/header-hero.css">
+  <link rel="stylesheet" href="../../CSS/home-sections.css">
+  <link rel="stylesheet" href="../../CSS/animations.css">
+  <link rel="stylesheet" href="../../CSS/responsive.css">
+  <link rel="stylesheet" href="../../CSS/inner-pages.css">
+  <link rel="stylesheet" href="../../CSS/refinements.css">
+  <link rel="stylesheet" href="../../CSS/effects.css">
+  <link rel="stylesheet" href="../../CSS/typography.css">
+  <!-- Premium design layer: loaded LAST, so it wins over the files above -->
+  <link rel="stylesheet" href="../../CSS/premium.css">
+  <script src="../../JS/site-config.js" defer></script>
+  <script src="../../JS/properties-data.js" defer></script>
+  <script src="../../JS/core.js" defer></script>
+  <script src="../../JS/inner-pages.js" defer></script>
+  <!-- Enquiry form: sent by JS/enquiry.js to the backend (Supabase + email) -->
+  <script src="../../JS/enquiry.js" defer></script>
+</head>
+<body class="standalone-page" data-page="contact" data-root="../../">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- SITE HEADER: the menu links are rebuilt from JS/site-config.js -->
+  <header class="site-header">
+    <a class="brand" href="../../" aria-label="ABI Estates home"><img class="brand-mark" src="../../IMAGES/abi-estates-mark.svg" alt="" width="42" height="42"><span class="brand-name">ABI <small>ESTATES</small></span></a>
+    <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    <nav class="nav-menu" aria-label="Main navigation">
+      <a class="nav-link" data-page="about" href="../about/">About</a>
+      <a class="nav-link" data-page="search" href="../search/">Find a home</a>
+      <a class="nav-link" data-page="properties" href="../properties/">Properties</a>
+      <a class="nav-link" data-page="approach" href="../approach/">Our approach</a>
+      <a class="nav-link" data-page="journal" href="../journal/">Blogs</a>
+      <a class="nav-link" data-page="contact" href="../contact/">Contact</a>
+      <a class="nav-cta" href="../contact/#enquiry">Arrange a viewing <span>↗</span></a>
+    </nav>
+  </header>
+  <main class="page-main" id="main">
+    <!-- PAGE BANNER: headline and intro text. The arched photo is set in CSS/effects.css (part 4) -->
+    <section class="page-hero page-hero-compact" id="contact-start">
+      <p class="eyebrow">05 / BEGIN A CONVERSATION</p>
+      <h1>Let’s find<br><em>your place.</em></h1>
+      <p class="page-lede">Tell us what you are looking for, what matters most in a home and where you hope to live.</p>
+    </section>
+    <!-- ENQUIRY: contact note (left) + enquiry form (right). The form is sent by JS/enquiry.js.
+         Keep the name="..." values: the database and the emails use them. -->
+    <section class="contact-layout page-section" id="enquiry">
+      <div class="contact-note reveal">
+        <p class="eyebrow">HERE WHEN YOU’RE READY</p>
+        <h2>A thoughtful conversation is a good place to begin.</h2>
+        <p>Ask us about a residence, arrange a private viewing or share the kind of home and location you have in mind. We can help you compare the details and plan what to see.</p>
+        <a class="contact-email" data-site="email" href="mailto:hello@abiestates.in">hello@abiestates.in</a>
+        <!-- These details come from JS/site-config.js (change them there) -->
+        <ul class="contact-info-list">
+          <li><strong>Office</strong><span data-site="address">Adyar, Chennai 600020<br>Tamil Nadu, India</span></li>
+          <li><strong>Phone</strong><a data-site="phone" href="tel:+914400000000">+91 44 0000 0000</a></li>
+          <li><strong>Hours</strong><span data-site="hours">Monday – Saturday · 9:00 am – 6:00 pm</span><br><span>Sunday · Closed</span></li>
+        </ul>
+        <a class="text-link" href="#location">Find us on the map <span>↓</span></a>
+      </div>
+      <form class="enquiry-card reveal" data-enquiry-form aria-label="Enquiry form">
+        <p class="eyebrow">PRIVATE ENQUIRY</p>
+        <h2>Tell us about the home you have in mind.</h2>
+        <div class="enquiry-grid">
+          <label class="enquiry-field"><span>Your name *</span><input name="name" required maxlength="120" autocomplete="name" placeholder="Full name"></label>
+          <label class="enquiry-field"><span>Email address *</span><input name="email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+          <div class="enquiry-field">
+            <label for="contact-phone">Phone number</label>
+            <span class="phone-control">
+              <select name="country_code" aria-label="Country calling code">
+                <option value="+91" selected>IND +91</option>
+                <option value="+971">UAE +971</option>
+                <option value="+966">Saudi Arabia +966</option>
+                <option value="+974">Qatar +974</option>
+                <option value="+965">Kuwait +965</option>
+                <option value="+973">Bahrain +973</option>
+                <option value="+968">Oman +968</option>
+                <option value="+1">USA +1</option>
+                <option value="+44">UK +44</option>
+                <option value="+65">Singapore +65</option>
+              </select><input id="contact-phone" name="phone" type="tel" pattern="[0-9 ()+-]{6,20}" title="Numbers only, 6 to 20 digits" autocomplete="tel-national" placeholder="Phone number">
+            </span>
+          </div>
+          <label class="enquiry-field"><span>Interested in</span><select name="interest">
+              <option value="">Choose a home type</option>
+              <option>Private villa</option>
+              <option>Luxury apartment</option>
+              <option>Penthouse</option>
+              <option>Not sure yet</option>
+            </select></label>
+          <label class="enquiry-field enquiry-field-full"><span>Your message</span><textarea name="message" rows="4" maxlength="2000" placeholder="Preferred areas, number of bedrooms, budget or a good time to call"></textarea></label>
+        </div>
+        <button class="button button-dark" type="submit">Send an enquiry <span>↗</span></button>
+        <p class="enquiry-message" data-form-message aria-live="polite"></p>
+      </form>
+    </section>
+    <!-- LOCATION: the map place comes from mapSearch in JS/site-config.js -->
+    <section class="page-section" id="location">
+      <div class="section-heading page-section-heading reveal">
+        <div>
+          <p class="eyebrow">OUR LOCATION</p>
+          <h2 class="section-title">Find us<br><em>in Chennai.</em></h2>
+        </div>
+        <p class="heading-note">Visits are by appointment, so we can give you our full attention. Send an enquiry or call ahead and we will plan a time that suits you.</p>
+      </div>
+      <div class="map-frame reveal">
+        <iframe data-site="map" title="ABI Estates office location on Google Maps" src="https://www.google.com/maps?q=Adyar,+Chennai,+Tamil+Nadu&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <div class="map-card">
+          <p class="eyebrow">VISIT ABI ESTATES</p>
+          <h3>Adyar, Chennai</h3>
+          <p>Adyar, Chennai 600020<br>Monday – Saturday · 9:00 am – 6:00 pm</p>
+          <a class="text-link" data-site="directions" href="https://www.google.com/maps/dir/?api=1&amp;destination=Adyar,+Chennai,+Tamil+Nadu" target="_blank" rel="noopener">Get directions <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+    <section class="page-section">
+      <div class="section-heading page-section-heading reveal">
+        <div>
+          <p class="eyebrow">A FEW WAYS TO BEGIN</p>
+          <h2 class="section-title">Tell us what home<br><em>means to you.</em></h2>
+        </div>
+        <p class="heading-note">You might have a clear shortlist or just a first question. Either way, we are happy to help you explore the next step.</p>
+      </div>
+      <div class="page-feature-grid">
+        <article class="page-feature-card reveal">
+          <img src="../../IMAGES/chennai-home-800.webp" srcset="../../IMAGES/chennai-home-800.webp 800w, ../../IMAGES/chennai-home-1600.webp 1600w" sizes="(max-width: 760px) 100vw, 50vw" alt="A welcoming home framed by trees" width="800" height="533" loading="lazy" decoding="async"><span>01 / ASK</span>
+          <h3>Start with a question</h3>
+          <p>Ask us about an area, a residence or the details you would like to understand before arranging a visit.</p>
+        </article>
+        <article class="page-feature-card reveal">
+          <img src="../../IMAGES/chennai-apartment-800.webp" srcset="../../IMAGES/chennai-apartment-800.webp 800w, ../../IMAGES/chennai-apartment-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 50vw" alt="Contemporary apartment architecture in Chennai" width="800" height="533" loading="lazy" decoding="async"><span>02 / COMPARE</span>
+          <h3>Talk through your options</h3>
+          <p>Share your priorities and we can help you compare the homes and locations that fit your search.</p>
+        </article>
+        <article class="page-feature-card reveal">
+          <img src="../../IMAGES/coastal-villa-800.webp" srcset="../../IMAGES/coastal-villa-800.webp 800w, ../../IMAGES/coastal-villa-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 50vw" alt="A quiet outdoor setting at a coastal villa" width="800" height="534" loading="lazy" decoding="async"><span>03 / VISIT</span>
+          <h3>See a home in person</h3>
+          <p>Choose a convenient time and we will help arrange a private viewing of the residences on your shortlist.</p>
+        </article>
+      </div>
+    </section>
+    <section class="page-section page-image-story reveal">
+      <img src="../../IMAGES/chennai-living-800.webp" srcset="../../IMAGES/chennai-living-800.webp 800w, ../../IMAGES/chennai-living-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 50vw" alt="Comfortable living room with natural light" width="800" height="544" loading="lazy" decoding="async">
+      <div>
+        <p class="eyebrow">WE LOOK FORWARD TO HEARING FROM YOU</p>
+        <h2>A thoughtful conversation is a good place to begin.</h2>
+        <p>Write to us at <a href="mailto:hello@abiestates.in">hello@abiestates.in</a> or call to talk about your search. We are based in Chennai and available Monday to Saturday.</p>
+        <a class="text-link" href="#enquiry">Open the enquiry form <span>↑</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="page-footer">
+    <a class="brand" href="../../"><img class="brand-mark" src="../../IMAGES/abi-estates-mark.svg" alt="" width="42" height="42"><span class="brand-name">ABI <small>ESTATES</small></span></a>
+    <span>Considered homes. Meaningful beginnings.</span>
+    <a href="../credits/">Photo credits</a>
+    <a href="../contact/">Start a conversation ↗</a>
+  </footer>
+</body>
+</html>

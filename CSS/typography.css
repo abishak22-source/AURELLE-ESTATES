@@ -1,0 +1,268 @@
+/* =====================================================================
+   ABI ESTATES - typography.css
+   TEXT STYLES for every page: font, weights, sizes, line spacing.
+   Loaded last, so these rules win. The values themselves (sizes, weights,
+   spacing) are variables: change them in variables.css.
+   Headings use --font-display (Libre Baskerville); everything else uses --font (Manrope).
+   ===================================================================== */
+
+/* ---------- 1. BODY TEXT ---------- */
+body {
+    font-family: var(--font);
+    font-size: var(--text-size);
+    line-height: var(--leading-body);
+    font-feature-settings: "kern", "liga";
+    /* Georgia's default numbers go up and down ("4" and "5" drop below the line).
+       lining-nums makes every digit the same height, so numbers sit on one line. */
+    font-variant-numeric: lining-nums;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+/* ---------- 2. HEADINGS (display font: --font-display in variables.css) ---------- */
+h1,
+h2,
+h3,
+.section-title,
+.hero-panel h1,
+.hero-panel h2,
+.page-hero h1,
+.hero-enquiry h2,
+.enquiry-card h2,
+.editorial-copy h2,
+.contact-note h2,
+.contact-details h3,
+.page-image-story h2,
+.map-card h3,
+.brand-name,
+.site-footer > p,
+.stat-number,
+.property-number,
+.property-price,
+.page-stat-row span {
+    font-family: var(--font-display);   /* headings use the elegant serif (variables.css) */
+    font-feature-settings: "lnum", "kern";   /* modern, even-height numbers */
+}
+
+/* Big headings */
+.section-title,
+.hero-panel h1,
+.hero-panel h2,
+.page-hero h1 {
+    font-weight: var(--weight-display);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+}
+
+.section-title { font-size: var(--title-size); }
+.hero-panel h1,
+.hero-panel h2 { font-size: var(--hero-title-size); }
+.page-hero h1  { font-size: var(--page-title-size); }
+
+/* Italic accent words: lighter italic gives the elegant contrast */
+.section-title em,
+.hero-panel em,
+.page-hero h1 em,
+h2 em,
+h3 em {
+    font-style: italic;
+    font-weight: var(--weight-display-small);
+    letter-spacing: -0.01em;
+}
+
+/* Smaller section headings */
+.editorial-copy h2,
+.contact-note h2,
+.page-image-story h2,
+.contact-details h3,
+.enquiry-card h2,
+.hero-enquiry h2 {
+    font-size: var(--sub-title-size);
+    font-weight: var(--weight-display-small);
+    line-height: var(--leading-heading);
+    letter-spacing: -0.015em;
+}
+
+.hero-enquiry h2 {
+    font-size: clamp(24px, 2.1vw, 30px);
+}
+
+/* Card titles */
+.property-info h3,
+.principle h3,
+.journal-card h3,
+.journal-card h2,
+.page-feature-card h3,
+.principle-cards h3,
+.page-step-grid h3,
+.map-card h3 {
+    font-family: var(--font-display);
+    font-size: var(--card-title-size);
+    font-weight: var(--weight-display-small);
+    line-height: var(--leading-heading);
+    letter-spacing: -0.012em;
+}
+
+/* Numbers and prices */
+.stat-number,
+.page-stat-row strong {
+    font-weight: var(--weight-display);
+    letter-spacing: -0.03em;
+    font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* Numbers that change or sit in columns: every digit gets the same width
+   (tabular-nums), so "01" and "04" or "4,200" and "5,100" take the same space
+   and nothing next to them jumps when the number changes. */
+#slide-counter,
+.collection-count,
+.property-price,
+.property-number,
+.property-details span,
+.page-stat-row span,
+.contact-info-list,
+.contact-hours {
+    font-variant-numeric: lining-nums tabular-nums;
+}
+
+.property-price {
+    font-size: 17px;
+    font-weight: var(--weight-display);
+}
+
+.property-number {
+    font-style: italic;
+    font-weight: var(--weight-display-small);
+}
+
+.brand-name {
+    font-weight: var(--weight-display);
+    letter-spacing: 0.14em;
+}
+
+.brand-name small {
+    font-family: var(--font);
+    font-weight: var(--weight-label);
+    letter-spacing: 0.32em;
+}
+
+.site-footer > p {
+    font-weight: var(--weight-display-small);
+}
+
+/* ---------- 3. LABELS, MENUS, BUTTONS (UI font: --font, which is --font-ui in variables.css) ---------- */
+.hero-enquiry,
+.hero-enquiry * {
+    font-family: var(--font);
+}
+
+.eyebrow,
+.hero-enquiry-kicker,
+.property-tag,
+.property-location,
+.page-feature-card > span,
+.principle-cards article > span,
+.page-step-grid article > span,
+.contact-info-list strong,
+.stat-label,
+.search-field span,
+.enquiry-field,
+.hero-enquiry label,
+.collection-count,
+.hero-bottom,
+.strip-group span,
+.copyright {
+    font-family: var(--font);
+    font-weight: var(--weight-label);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+}
+
+.eyebrow,
+.hero-enquiry-kicker {
+    font-size: var(--label-size);
+}
+
+.nav-link {
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.button,
+.nav-cta,
+.search-button,
+.filter-button,
+.hero-enquiry button,
+.text-link {
+    font-family: var(--font);
+    font-size: var(--button-size);
+    font-weight: var(--weight-label);
+    letter-spacing: var(--tracking-button);
+    text-transform: uppercase;
+}
+
+/* Form fields: readable sans text, 16px so phones do not zoom in */
+input,
+select,
+textarea {
+    font-family: var(--font);
+    font-variant-numeric: lining-nums;   /* phone numbers typed in the forms sit on one line */
+}
+
+.enquiry-field input,
+.enquiry-field select,
+.enquiry-field textarea,
+.hero-enquiry input,
+.hero-enquiry select,
+.hero-enquiry textarea,
+.search-field select,
+.home-filter select {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+/* ---------- 4. PARAGRAPHS ---------- */
+.hero-text,
+.page-lede,
+.intro-bottom p,
+.heading-note,
+.properties-intro,
+.approach-text > p:not(.eyebrow),
+.principle p,
+.journal-top > p,
+.blog-excerpt,
+.page-feature-card p,
+.editorial-copy p:not(.eyebrow),
+.contact-note p:not(.eyebrow),
+.page-image-story p:not(.eyebrow),
+.contact-heading > p:not(.eyebrow),
+.contact-details > p:not(.eyebrow) {
+    font-family: var(--font);
+    font-weight: 400;
+    line-height: var(--leading-body);
+}
+
+.hero-text,
+.page-lede {
+    font-size: clamp(16px, 1.25vw, 19px);
+    font-weight: 500;
+}
+
+/* ---------- 5. PHONES ---------- */
+@media (max-width: 640px) {
+    :root {
+        --text-size: 16px;
+        --title-size: clamp(36px, 10vw, 48px);
+        --hero-title-size: clamp(42px, 12vw, 56px);
+        --page-title-size: clamp(42px, 12vw, 58px);
+        --sub-title-size: clamp(26px, 7.5vw, 34px);
+        --card-title-size: 22px;
+        --tracking-label: 0.16em;
+    }
+}
